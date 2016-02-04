@@ -1,0 +1,5 @@
+ gitRockStars = ["iyaaad", "Carmen"]
+ for i in gitRockStars:
+ for i in gitRockStars:
+     print ("Congrats " + i + " , you know how to use GIT\n");
+     print ("Congrats " + i + " , you know how to use GIT\n");
