@@ -1,5 +1,5 @@
 #Just add your name to the list to show that git pull/push worked for you
 
-gitRockStars = ["iyaaad"]
+gitRockStars = ["iyaaad,Begum"]
 for i in gitRockStars:
     print ("Congrats " + i + " , you know how to use GIT\n");
