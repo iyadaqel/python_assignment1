@@ -1,4 +1,5 @@
 #Function used to check if a string is numeric or not
+#hola otra vez!
 def is_number(s):
     try:
         float(s)
