@@ -5,7 +5,7 @@ import report
 import customer
 
 dailySales = []
-userss={0:"NonRegistered",1:"Monica",2:"Begum",3:"Iyad",4:"Carmen"}
+userss={0:"NonRegistered",1:"Monica",2:"Begum",3:"Iyad",4:"Carmen", 5:"Eustaquio"}
 
 
 #Show the user a menu to choose what he wants
