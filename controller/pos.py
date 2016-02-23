@@ -1,20 +1,30 @@
 # This file is the main engine of the program. It will take care of redirecting everything.
 # For example: it will take the input tokenize it and direct it to the approrpiate method.
 
+status = {}
 
 def addCommand(userCommand):
     #This function will take a userCommand split it using splituserCommand() and then
     # redirect it to the appropriate class
     #and then return the result as a status dictionary to the view.
+    commands = splitUserCommand(userCommand)
 
-
+    firstCommand =  commands[0].lower()
     #if user choice == sale .. create a new sale with the values  provided. But first check the logic
-
-
-    #if user choice == customer.. create a new customer with the values provided. But first check the logic.
-
-
-    #if user choice == report .. call the function
+    if ( firstCommand == 'sale'):
+        #DO more magic and then create a sale.
+    elif(firstCommand == 'customer'):
+        #Do more magic and then create a customer.
+    elif(firstCommand == 'report'):
+        #Do more magic and then create a report.
+    elif(firstCommand == 'crm'):
+        #Do more magic and then create a report.
+    elif(firstCommand == 'close'):
+        status['action']  == 'close'
+        status['message'] == 'Have a nice day'
+    else:
+        #i don't understand the command.
+        status['message'] == 'Have a nice day'
 
 
 
@@ -22,6 +32,9 @@ def splitUserCommand(userCommand):
     #All the logic for splitting should happen here
     #This function return a dictionary with the found attribute and most importantly action:sale or action:crm ..etc
 
+    userChoice=userCommand.split(" ")
+    return userChoice
+   # userInputWithoutFirstCommand= " ".join(userInput.split(" ")[1:])
 
 
 
@@ -33,14 +46,7 @@ def splitUserCommand(userCommand):
 
 
 
-
-
-
-
-
-
-
-   '''
+'''
     userChoice=userCommand.split(" ")[0].lower()
     userInputWithoutFirstCommand= " ".join(userCommand.split(" ")[1:])
     if(userChoice == 'sale'):
@@ -63,4 +69,4 @@ def splitUserCommand(userCommand):
         break;
     else:
         print("Command not found. Please input the correct command")
-    '''
+'''
