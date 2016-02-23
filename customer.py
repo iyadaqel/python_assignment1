@@ -7,13 +7,19 @@ class Customer(object):
         self.__customerID=customerID
         self.__customerName=customerName
         Customer.total+=1
-        self.__userDictionary=[]
+        self.__customers=[]
     def totalCustomers(self):
         return Customer.total
-    
-    def createCustomer(self, userDictionary , customerID, customerName):
-    self.__userDictionary[self.__customerID]=self.__customerName
-    return self.__userDictionary   
+    def getId(self):
+        return self.__customerID
+    def setId(self,new_id):
+        self.__customerID=new_id
+    def createCustomer(self, customerName):
+        self.__customers.append(customerName)
+        
+#main
+        
+        
 """
 def is_number(s):
     try:
