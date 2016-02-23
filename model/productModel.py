@@ -18,11 +18,15 @@ class Product (object):
                    for i in range (Product.total):
                        print(Product.productListita[i])
 
+
+               @staticmethod
+               def searchSKU (sSKU):
+                   for i in range (Product.total):
+                       if ((Product.productListita[i].find(sSKU))!= (-1)):
+                           print(Product.productListita[i])
+                       else:
+                           print("The SKU number doesn´t exist")
+
                def __str__(self):
                               rep ="#SKU:" + self.SKU + " #Price:"+ self.price
                               return rep
-
-               def getPrice (self, ):
-                              return self.price
-
-
