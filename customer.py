@@ -1,20 +1,19 @@
 #Function used to check if a string is numeric or not
 #hola otra vez!
 #tried to create a class for the customer
-
 class Customer(object):
-    total=0
-    def __init__(self, customerID, customerName):
-        self.__customerID=customerID
-        self.__customerName=customerName
-        Customer.total+=1
-        self.__userDictionary=[]
-    def totalCustomers(self):
-        return Customer.total
-    
-    def createCustomer(self, userDictionary , customerID, customerName):
-    self.__userDictionary[self.__customerID]=self.__customerName
-    return self.__userDictionary   
+    def __init__(self, id, name, surname, contact, street, zipCode):
+        self.id=id
+        self.name=name
+        self.surname=surname
+        self.contact=contact
+        self.street=street
+        self.zipCode=zipCode
+#just tried if I could make the user a class, not sure if it works
+class User:
+    pass
+userDictionary=User()
+userDictionary.id=name
 """
 def is_number(s):
     try:
