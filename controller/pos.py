@@ -12,7 +12,17 @@ def addCommand(userCommand):
     firstCommand =  commands[0].lower()
     #if user choice == sale .. create a new sale with the values  provided. But first check the logic
     if ( firstCommand == 'sale'):
-        #DO more magic and then create a sale.
+
+        #SKU:123 #ID:Customer123 #CC:123ABC #ID:Customer123654
+        if()
+
+
+
+
+
+
+
+
     elif(firstCommand == 'customer'):
         #Do more magic and then create a customer.
     elif(firstCommand == 'report'):
