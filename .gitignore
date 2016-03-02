@@ -1,2 +1,16 @@
 
 *.pyc
+
+POS_login.py
+
+.idea/vcs.xml
+
+.idea/workspace.xml
+
+.idea/modules.xml
+
+.idea/misc.xml
+
+.idea/firstGroupAssignment.iml
+
+.idea/encodings.xml
