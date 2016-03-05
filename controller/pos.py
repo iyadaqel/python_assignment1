@@ -2,45 +2,67 @@
 # For example: it will take the input tokenize it and direct it to the approrpiate method.
 from model import customerModel
 from model.customerModel import Customer
+from model.productModel import  Product
+from model.saleModel import Sale
 
-
+#First time you load the program initate all these.
 status = {}
-a = Customer(2,"Monica")
-c = Customer(1,"Iyad")
-b = Customer(3,"Karmen")
-d = Customer(4,"Begum")
 
-def addCommand(userCommand):
-    #This function will take a userCommand split it using splituserCommand() and then
-    # redirect it to the appropriate class
-    #and then return the result as a status dictionary to the view.
-    commands = splitUserCommand(userCommand)
 
-    firstCommand =  commands[0].lower()
-    #if user choice == sale .. create a new sale with the values  provided. But first check the logic
-    if ( firstCommand == 'sale'):
-        #customer id
-        customerId = 1
-        customer = Customer.searchCustomerByID(customerId)
-        if(customer != False):
-            print(customer.customerName)
-        #SKU:123 #ID:Customer123 #CC:123ABC #ID:Customer123654
+def addSale(customerID=1 , productSKU = 123 , cc=0):
+        #Do some logic here and then send it to Sale(Product,PayMethod,Customer , total)
 
-    elif(firstCommand == 'customer'):
-        #Do more magic and then create a customer.
-        print("hey")
-    elif(firstCommand == 'report'):
-        #Do more magic and then create a report.
-        print("hey")
-    elif(firstCommand == 'crm'):
-        #Do more magic and then create a report.
-        print("hey")
-    elif(firstCommand == 'close'):
-        status['action']  == 'close'
-        status['message'] == 'Have a nice day'
-    else:
-        #i don't understand the command.
-        status['message'] == 'Have a nice day'
+        #Get the customer
+        customer = Customer.searchCustomerByID(customerID)
+        if(customer == False):
+             customer = Customer.searchCustomerByID(0)
+
+        #Get the product
+        product = Product.getProductBySKU(productSKU)
+        if(product != False):
+            total = product.price
+        else:
+            total = 0
+
+        if(cc==1):
+            payMethod = "Credit Card"
+        else:
+            payMethod = "Cash"
+
+        #Create the Sale object
+        Sale(product , payMethod , customer , total)
+
+
+
+def addCustomer(customerID=0 , name=""):
+    Customer(customerID , name)
+
+
+def generateCCReport():
+    listOfSales = Sale.getSaleList()
+    ccSales = 0
+    cashSales = 0
+    for sale in listOfSales:
+        if(sale.paymethod == "Cash"):
+            cashSales += sale.total
+        else:
+            ccSales += sale.total
+
+    print("Cash Sales: " + str(cashSales) + " ccSales: " + str(ccSales))
+
+def generateCustomerReport():
+    listOfSales = Sale.getSaleList()
+    customersSales = {}
+    keys = customersSales.keys()
+    for sale in listOfSales:
+        customerID = sale.customer.customerID
+        if customerID in keys:
+            customersSales[customerID] = customersSales[customerID] + sale.total
+        else:
+            customersSales[customerID] = 0 + sale.total
+
+    for key, value in customersSales.items():
+        print(Customer.searchCustomerByID(key).customerName, value)
 
 
 
@@ -51,12 +73,6 @@ def splitUserCommand(userCommand):
     userChoice=userCommand.split(" ")
     return userChoice
    # userInputWithoutFirstCommand= " ".join(userInput.split(" ")[1:])
-
-
-
-
-
-
 
 
 
