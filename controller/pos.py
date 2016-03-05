@@ -1,7 +1,14 @@
 # This file is the main engine of the program. It will take care of redirecting everything.
 # For example: it will take the input tokenize it and direct it to the approrpiate method.
+from model import customerModel
+from model.customerModel import Customer
+
 
 status = {}
+a = Customer(2,"Monica")
+c = Customer(1,"Iyad")
+b = Customer(3,"Karmen")
+d = Customer(4,"Begum")
 
 def addCommand(userCommand):
     #This function will take a userCommand split it using splituserCommand() and then
@@ -12,23 +19,22 @@ def addCommand(userCommand):
     firstCommand =  commands[0].lower()
     #if user choice == sale .. create a new sale with the values  provided. But first check the logic
     if ( firstCommand == 'sale'):
-
+        #customer id
+        customerId = 1
+        customer = Customer.searchCustomerByID(customerId)
+        if(customer != False):
+            print(customer.customerName)
         #SKU:123 #ID:Customer123 #CC:123ABC #ID:Customer123654
-        if()
-
-
-
-
-
-
-
 
     elif(firstCommand == 'customer'):
         #Do more magic and then create a customer.
+        print("hey")
     elif(firstCommand == 'report'):
         #Do more magic and then create a report.
+        print("hey")
     elif(firstCommand == 'crm'):
         #Do more magic and then create a report.
+        print("hey")
     elif(firstCommand == 'close'):
         status['action']  == 'close'
         status['message'] == 'Have a nice day'

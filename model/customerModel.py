@@ -1,28 +1,27 @@
 class Customer(object):
     total=0
-    def __init__(self, customerID, customerName):
-        self.__customerID=customerID
-        self.__customerName=customerName
+    customers={}
+
+
+    def __init__(self, customerID=0, customerName=""):
+        self.customerID=customerID
+        self.customerName=customerName
         Customer.total+=1
-        self.__customers=[]
+        Customer.customers[customerID] = self
+      #  Customer.customers.append(self)
+
 
     def totalCustomers(self):
         return Customer.total
 
     def getId(self):
-        return self.__customerID
+        return self.customerID
 
     def setId(self,new_id):
-        self.__customerID=new_id
-        self.__customers.append(customerName)
+        self.customerID=new_id
 
-    def searchCustomer(self,customerID):
-        for self.__customers in self.__customers(self.__customers[1:]):
-        if self.__customerID is str:
-            searchval=1
+    def searchCustomerByID(customerID):
+        if(customerID in Customer.customers):
+            return Customer.customers[customerID]
         else:
-            searchval=0
-            print("Not valid user ID")
-        return(searchval)
-            
-        
+            return False
