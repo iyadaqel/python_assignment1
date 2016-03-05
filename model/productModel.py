@@ -1,12 +1,13 @@
 class Product (object):
                total=0
-               __productListita=[]
+               products={}
 
-               def __init__ (self, SKU, price):
+               def __init__ (self, SKU, name, price):
                               Product.total+=1
-                              self.__SKU=SKU
-                              self.__price=price
-                              Product.__productListita.append(self)
+                              self.SKU=SKU
+                              self.name = name
+                              self.price=price
+                              Product.products[SKU] = self
 
 
                @staticmethod
@@ -14,11 +15,24 @@ class Product (object):
                               print("The total number of products is", Product.total)
 
                @staticmethod
-               def productList():
-                   for i in range (Product.total):
-                       print(Product.__productListita[i])
+               def getProductList():
+                   return Product.products
 
-               @staticmethod
+
+               def __str__(self):
+                              rep ="#SKU:" + self.__SKU + " #Price:"+ self.__price
+                              return rep
+
+               def getProductBySKU(productSKU):
+                   if(productSKU in Product.products):
+                       return Product.products[productSKU]
+                   else:
+                      return False
+
+
+
+
+'''
                def searchSKU(sSKU):
                    a=0
                    for i in range (Product.total):
@@ -28,9 +42,4 @@ class Product (object):
                            a=1
                    if a==0:
                        print("The SKU number "+ sSKU + " does not exist")
-
-
-               def __str__(self):
-                              rep ="#SKU:" + self.__SKU + " #Price:"+ self.__price
-                              return rep
-
+'''

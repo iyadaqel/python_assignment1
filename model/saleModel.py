@@ -1,24 +1,25 @@
+import time
+
+
 class Sale(object):
     totalDailySales = 0
     saleList=[]
 
-    def __init__(self,Product,PayMethod,Customer):
-        self.product = Product
-        self.PayMethod = PayMethod
-        self.Customer = Customer
+    def __init__(self,product,paymethod,customer ,total):
+        self.product = product
+        self.paymethod = paymethod
+        self.customer = customer
+        self.total = total
+        self.date = time.strftime("%d/%m/%Y %H:%M:%S")
         Sale.totalDailySales+=1
         Sale.saleList.append(self)
-
 
     def getTotalDailySales():
         print("The total daily sales are", Sale.totalDailySales)
 
     def getSaleList():
-        for i in range (Sale.totalDailySales):
-                       print(Sale.saleList[i].product, Sale.saleList[i].PayMethod, Sale.saleList[i].Customer)
+        return Sale.saleList
 
-    
-        
-#sale1=Sale("kk","cc","99")
-#Sale.getTotalDailySales()
-#Sale.getSaleList()
+    def __str__(self):
+        return  ("Customer: " + self.customer.customerName + " bought " +  str(self.product.price) + "€ and paid by "  + self.paymethod  + " at " + self.date)
+

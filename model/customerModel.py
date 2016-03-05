@@ -20,6 +20,10 @@ class Customer(object):
     def setId(self,new_id):
         self.customerID=new_id
 
+    @staticmethod
+    def getCustomerList():
+        return Customer.customers
+
     def searchCustomerByID(customerID):
         if(customerID in Customer.customers):
             return Customer.customers[customerID]
