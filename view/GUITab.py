@@ -132,6 +132,8 @@ if __name__ == '__main__':
     user_ID = Entry(left).pack()
     label3tab2 = Label(left, text="Customer Name: ", font=("Helvetica", 10), fg="black").pack()
     customerName = Entry(left).pack()
+    Button(left, text="Register new customer", command=(lambda: write("New Customer Registered"))).pack()
+
     '''
     Label(tab2, text="How are you??", bg='black', fg='#3366ff').pack(side=TOP, fill=BOTH, expand=YES)
     txt = Text(tab2, width=25, height=10)
