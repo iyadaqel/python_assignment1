@@ -1,4 +1,4 @@
-from Tkinter import *
+from tkinter import *
 class Notebook(Frame):
     def __init__(self, parent, activerelief = SOLID, inactiverelief = SOLID, xpad = 4, ypad = 4, activefg = 'black',activebg='green',inactivebg='grey',bd=1,inactivefg = 'black', **kw):                                                                
         self.activefg = activefg
