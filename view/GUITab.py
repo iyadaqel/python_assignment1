@@ -82,28 +82,51 @@ if __name__ == '__main__':
 	def write(x): print (x)
 
 	root = Tk()
-	root.title("Tabs")
+	root.title("Pythunicors POS")
 
-	bar = TabBar(root, "Info")
+	bar = TabBar(root, "Sales")
 
-	tab1 = Tab(root, "Wow...")				# notice how this one's master is the root instead of the bar
-	Label(tab1, text="Sunjay Varma is an extra ordinary little boy.\n\n\n\n\nCheck out his website:\nwww.sunjay-varma.com", bg="white", fg="red").pack(side=TOP, expand=YES, fill=BOTH)
+	tab1 = Tab(root, "Sales")				# notice how this one's master is the root instead of the bar
+	label1tab1=Label(tab1, text="Register a Sale:", font=("Helevetica",20), foreground="black").pack(side=TOP, expand=YES, fill=BOTH)
+
 	Button(tab1, text="PRESS ME!", command=(lambda: write("YOU PRESSED ME!"))).pack(side=BOTTOM, fill=BOTH, expand=YES)
 	Button(tab1, text="KILL THIS TAB", command=(lambda: bar.delete("Wow..."))).pack(side=BOTTOM, fill=BOTH, expand=YES)
 
-	tab2 = Tab(root, "Hi there!")
+
+
+
+
+
+
+	tab2 = Tab(root, "Customers")
 	Label(tab2, text="How are you??", bg='black', fg='#3366ff').pack(side=TOP, fill=BOTH, expand=YES)
 	txt = Text(tab2, width=50, height=20)
 	txt.focus()
 	txt.pack(side=LEFT, fill=X, expand=YES)
 	Button(tab2, text="Get", command=(lambda: write(txt.get('1.0', END).strip()))).pack(side=BOTTOM, expand=YES, fill=BOTH)
 
-	tab3 = Tab(root, "Info")
+	tab3 = Tab(root, "Products")
 	Label(tab3, bg='white', text="This tab was given as an argument to the TabBar constructor.\n\nINFO:\n"+info).pack(side=LEFT, expand=YES, fill=BOTH)
+
+	tab4 = Tab(root, "Reports")
+	Label(tab4, text="CC vs. Cash", bg='black', fg='#3366ff').pack(side=TOP, fill=BOTH, expand=YES)
+	txt = Text(tab4, width=50, height=20)
+	txt.focus()
+	txt.pack(side=LEFT, fill=X, expand=YES)
+	Button(tab4, text="Get", command=(lambda: write(txt.get('1.0', END).strip()))).pack(side=BOTTOM, expand=YES, fill=BOTH)
+
+	tab5 = Tab(root, "Settings")
+	Label(tab5, text="Hola bebes", bg='black', fg='#3366ff').pack(side=TOP, fill=BOTH, expand=YES)
+	txt = Text(tab5, width=50, height=20)
+	txt.focus()
+	txt.pack(side=LEFT, fill=X, expand=YES)
+	Button(tab5, text="Get", command=(lambda: write(txt.get('1.0', END).strip()))).pack(side=BOTTOM, expand=YES, fill=BOTH)
 
 	bar.add(tab1)                   # add the tabs to the tab bar
 	bar.add(tab2)
 	bar.add(tab3)
+	bar.add(tab4)
+	bar.add(tab5)
 
 	#bar.config(bd=2, relief=RIDGE)			# add some border
 
