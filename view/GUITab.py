@@ -86,6 +86,8 @@ if __name__ == '__main__':
     bar = TabBar(root, "Sales")
     tab1= Tab(root , "Sales")
 
+
+    #First tab
     label1tab1 = Label(tab1, text="Register a Sale:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
 
     label2tab1 = Label(tab1, text="User ID: ", font=("Helvetica", 10), fg="black").pack()
@@ -103,13 +105,28 @@ if __name__ == '__main__':
 
     Button(tab1, text="Register", command=(lambda: write("Sale Registered"))).pack(side= RIGHT, expand=YES)
 
+
+    #Second Tab
     tab2 = Tab(root, "Customers")
+    S = Scrollbar(tab2)
+    T = Text(tab2, height=4, width=50)
+    S.pack(side=RIGHT, fill=Y)
+    T.pack(side=LEFT, fill=Y)
+    S.config(command=T.yview)
+    T.config(yscrollcommand=S.set)
+    quote = "  USER ID      NAME\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito """
+    T.insert(END, quote)
+    '''
     Label(tab2, text="How are you??", bg='black', fg='#3366ff').pack(side=TOP, fill=BOTH, expand=YES)
-    txt = Text(tab2, width=50, height=20)
+    txt = Text(tab2, width=25, height=10)
     txt.focus()
     txt.pack(side=LEFT, fill=X, expand=YES)
-    sales_amount = Entry(tab2)
+    Label(tab2, text="How are you??", bg='black', fg='#3366ff').pack(side=TOP, fill=BOTH, expand=YES)
+    txt = Text(tab2, width=25, height=10)
+    txt.focus()
+    txt.pack(side=LEFT, fill=X, expand=YES)
     Button(tab2, text="Get", command=(lambda: write(txt.get('1.0', END).strip()))).pack(side=BOTTOM, expand=YES, fill=BOTH)
+    '''
     tab3 = Tab(root, "Products")
     Label(tab3, bg='white', text="This tab was given as an argument to the TabBar constructor.\n\nINFO:\n"+info).pack(side=LEFT, expand=YES, fill=BOTH)
 
