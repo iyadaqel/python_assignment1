@@ -15,6 +15,7 @@ c.create_arc((2,2,152,152), fill="#E00022", outline="#E00022", start=prop(650), 
 c.create_arc((2,2,152,152), fill="#294994", outline="#294994",  start=prop(850), extent = prop(150))
 root.mainloop()
 """
+
 #Payment
 
 tkinter.Label(root, text='Credit Card vs Cash').pack()

@@ -1,4 +1,4 @@
-import tkinter
+import ttk, tkinder 
 mainWindow = tkinter.Tk()
 
 mainFrame = tkinter.Frame(mainWindow, name = 'main-frame')
