@@ -108,14 +108,30 @@ if __name__ == '__main__':
 
     #Second Tab
     tab2 = Tab(root, "Customers")
-    S = Scrollbar(tab2)
-    T = Text(tab2, height=4, width=50)
+    panes = PanedWindow(tab2)
+    panes.pack(fill="both", expand="yes")
+    left = Label(panes, text="Left Pane")
+    left.pack()
+    right = Label(panes, text="Right Pane")
+    right.pack()
+    panes.add(left)
+    panes.add(right)
+
+    label0tab2 = Label(right, text="List of customers:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
+    S = Scrollbar(right)
+    T = Text(right, height=4, width=50)
     S.pack(side=RIGHT, fill=Y)
     T.pack(side=LEFT, fill=Y)
     S.config(command=T.yview)
     T.config(yscrollcommand=S.set)
     quote = "  USER ID      NAME\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito """
     T.insert(END, quote)
+
+    label1tab2 = Label(left, text="Register a Customer:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
+    label2tab2 = Label(left, text="Customer ID: ", font=("Helvetica", 10), fg="black").pack()
+    user_ID = Entry(left).pack()
+    label3tab2 = Label(left, text="Customer Name: ", font=("Helvetica", 10), fg="black").pack()
+    customerName = Entry(left).pack()
     '''
     Label(tab2, text="How are you??", bg='black', fg='#3366ff').pack(side=TOP, fill=BOTH, expand=YES)
     txt = Text(tab2, width=25, height=10)
