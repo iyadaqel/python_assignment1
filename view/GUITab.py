@@ -127,16 +127,28 @@ if __name__ == '__main__':
     txt.pack(side=LEFT, fill=X, expand=YES)
     Button(tab2, text="Get", command=(lambda: write(txt.get('1.0', END).strip()))).pack(side=BOTTOM, expand=YES, fill=BOTH)
     '''
+    #Third tab
     tab3 = Tab(root, "Products")
     Label(tab3, bg='white', text="This tab was given as an argument to the TabBar constructor.\n\nINFO:\n"+info).pack(side=LEFT, expand=YES, fill=BOTH)
 
+    #Cuarta tab
     tab4 = Tab(root, "Reports")
+
+    panes = PanedWindow(tab4)
+
+    #ttk.Label(tab4, text='Heading Here').grid(row=1, column=3)
+    ttk.Separator(tab4,orient=VERTICAL).grid(column=2, rowspan=20, sticky="ns")
+   # ttk.Label(tab4, text='Heading Here').grid(row=3, column=1)
+    ttk.Separator(tab4,orient=VERTICAL).grid(column=3, rowspan=20, sticky="ns")
+    ttk.Label(tab4, text='Heading Here').grid(row=10, column=6)
+
+    '''
     Label(tab4, text="CC vs. Cash", bg='black', fg='#3366ff').pack(side=TOP, fill=BOTH, expand=YES)
     txt = Text(tab4, width=50, height=20)
     txt.focus()
     txt.pack(side=LEFT, fill=X, expand=YES)
     Button(tab4, text="Get", command=(lambda: write(txt.get('1.0', END).strip()))).pack(side=BOTTOM, expand=YES, fill=BOTH)
-
+    '''
     tab5 = Tab(root, "Settings")
     Label(tab5, text="Hola bebes", bg='black', fg='#3366ff').pack(side=TOP, fill=BOTH, expand=YES)
     txt = Text(tab5, width=50, height=20)
