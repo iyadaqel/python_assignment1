@@ -16,7 +16,7 @@ root = Tk.Tk()
 f = Figure(figsize=(5,4), dpi=100)
 ax = f.add_subplot(111)
 
-data = (20, 35, 30, 35, 27)
+data = (20, 35)
 
 ind = numpy.arange(5)  
 width = .5
