@@ -47,25 +47,34 @@ def addSale(customerID , productSKU , cc):
 def addCustomer(customerID , name):
         result ={}
         Customer(customerID , name)
-        result['error'] = True
+        result['error'] = False
         result['message'] = "Customer Added Successfuly. VIVAAA Pythunicorns"
+        return result
+
+def addProduct(SKU, name, price):
+        result ={}
+        Product(SKU , name , price)
+        result['error'] = False
+        result['message'] = "Product Added Successfuly. VIVAAA Pythunicorns"
         return result
 
 
 def getAllCustomersNames():
     customerNames = {}
     customers = Customer.getCustomerList()
+    quote ="USER ID      NAME\n"
     for key in customers:
-        customerNames[key] = customers[key].customerName
-    return customerNames
+        quote = quote + str(key) + "    " +  customers[key].customerName +  "\n"
+    return quote
 
 
 def getAllProductsNames():
     productNames = {}
     products = Product.getProductList()
+    quote ="Product SKU      NAME\n"
     for key in products:
-        productNames[key] = products[key].name
-    return productNames
+        quote = quote + str(key) + "    " + products[key].name + "\n"
+    return quote
 
 
 
@@ -94,42 +103,3 @@ def generateCustomerReport():
 
     for key, value in customersSales.items():
         print(Customer.searchCustomerByID(key).customerName, value)
-
-
-
-def splitUserCommand(userCommand):
-    #All the logic for splitting should happen here
-    #This function return a dictionary with the found attribute and most importantly action:sale or action:crm ..etc
-
-    userChoice=userCommand.split(" ")
-    return userChoice
-   # userInputWithoutFirstCommand= " ".join(userInput.split(" ")[1:])
-
-
-
-
-
-'''
-    userChoice=userCommand.split(" ")[0].lower()
-    userInputWithoutFirstCommand= " ".join(userCommand.split(" ")[1:])
-    if(userChoice == 'sale'):
-        sale = Sales.extractCommandos(userInputWithoutFirstCommand , userss)
-        dailySales.append(sale)
-        print("You successfully regiestered a sale")
-    elif(userChoice=='customer'):
-        custom erName = input("Please enter customer name ")
-        id = userInput.split(" ")[1].split(":")[1];
-        print(customer.create_user(userss ,id , customerName))
-    elif(userChoice=='report'):
-        report = report.build_cash_report(dailySales)
-        print("Cash Sales for today are: " + str(report['cash_sales']))
-        print("Credit Card Sales for today are " + str(report['cc_sales']))
-    elif(userChoice=='crm'):
-        crm = report.build_customer_report(dailySales)
-        for k,v in crm.items():
-                print(" Sales for Customer ID:" + k + " are  " + str(v))
-    elif(userChoice=="close"):
-        break;
-    else:
-        print("Command not found. Please input the correct command")
-'''

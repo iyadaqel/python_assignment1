@@ -28,13 +28,30 @@ if __name__ == '__main__':
             resultLabel.configure(fg="green" , text=result['message'])
 
     def addCustomer():
-       # customerID = customerIDTab2.get()
-        name = customerName.get()
-        result = pos.addCustomer(10,name)
+        customerID = customerIDTab2.get()
+        name = customerNameTab2.get()
+        result = pos.addCustomer(customerID,name)
         if(result['error']==True):
             customerResultLabel.configure(fg="red" , text=result['message'])
         else:
             customerResultLabel.configure(fg="green" , text=result['message'])
+            quote = pos.getAllCustomersNames()
+            T.delete('1.0', END)
+            T.insert(END,quote)
+
+    def addProduct():
+        SKU = SKUEntryThirdTab.get()
+        name= productNameEntryThirdTab.get()
+        price =priceEntryThirdTab.get()
+        result = pos.addProduct(SKU, name , price)
+        if(result['error']==True):
+            productResultLabel.configure(fg="red" , text=result['message'])
+        else:
+            productResultLabel.configure(fg="green" , text=result['message'])
+            quote = pos.getAllProductsNames()
+            T3.delete('1.0', END)
+            T3.insert(END,quote)
+
 
 
     #Defining the window and the Sale
@@ -72,72 +89,92 @@ if __name__ == '__main__':
     RegistSale.grid(row=5, column=2, pady=8)
     chButton.grid(row=5, column=1)
 
-    #Second Tab
-    tab2 = Tab(root, "Customers")
-    panes2 = PanedWindow(tab2)
-    panes2.pack(fill="both", expand="yes")
-    left2 = Label(panes2, text="Left Pane")
-    left2.pack()
-    right2 = Label(panes2, text="Right Pane")
-    right2.pack()
-    panes2.add(left2)
-    panes2.add(right2)
 
-    label0tab2 = Label(right2, text="List of customers:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
-    S = Scrollbar(right2)
-    T = Text(right2, height=4, width=50)
+    #SECOND TAB
+    tab2 = Tab(root, "Customers")
+
+    frame1t2=Frame(tab2, bd=3, relief="groove")
+    label0tab2 = Label(frame1t2, text="List of customers:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
+    S = Scrollbar(frame1t2)
+    T = Text(frame1t2, height=4, width=50)
     S.pack(side=RIGHT, fill=Y)
     T.pack(side=LEFT, fill=Y)
     S.config(command=T.yview)
     T.config(yscrollcommand=S.set)
-    currentCustomers = pos.getAllCustomersNames()
-    quote ="USER ID      NAME\n"
-    for key in currentCustomers:
-        quote = quote + str(key) + "    " + currentCustomers[key] + "\n"
+    quote = pos.getAllCustomersNames()
     T.insert(END, quote)
+    sep1t2=ttk.Separator(tab2,orient=VERTICAL)
 
-    label1tab2 = Label(left2, text="Register a Customer:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
-    label2tab2 = Label(left2, text="Customer ID: ", font=("Helvetica", 10), fg="black").pack()
-    customerIDTab2 = Entry(left2).pack()
-    label3tab2 = Label(left2, text="Customer Name: ", font=("Helvetica", 10), fg="black").pack()
-    customerName = Entry(panes2).pack()
-    print(customerName)
-    customerResultLabel = Label(left2, text="")
-    Button(left2, text="Register new customer", command=addCustomer).pack()
+    frame2t2=Frame(tab2, bd=3, relief="groove")
+    label1tab2 = Label(frame2t2, text="Register a Customer:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
+    label2tab2 = Label(frame2t2, text="Customer ID: ", font=("Helvetica", 10), fg="black").pack()
+    customerIDTab2 = Entry(frame2t2 , text="")
+    customerIDTab2.pack()
+    label3tab2 = Label(frame2t2, text="Customer Name: ", font=("Helvetica", 10), fg="black")
+    customerNameTab2 = Entry(frame2t2)
+    label3tab2.pack()
+    customerNameTab2.pack()
+    customerResultLabel = Label(frame2t2, text="")
+    customerResultLabel.pack()
+    Button(frame2t2, text="Register new customer", command=addCustomer).pack()
+
+
+# Position
+
+    frame1t2.grid(padx=10, pady=10, row=1, column=2)
+    #label0tab2.grid(row=1, column=2)
+    #When it works position rest of elements
+    sep1t2.grid(column=4,row=1, rowspan=20, sticky="ns")
+
+    frame2t2.grid(padx=10, pady=10, row=1, column=6)
+    #customerName.grid(row=1,column=2)
+    #label1tab2.grid(row=1, column=6)
+    #when it works position rest of elements
 
 
     #Third tab
     tab3 = Tab(root, "Product")
-    panes3 = PanedWindow(tab3)
-    panes3.pack(fill="both", expand="yes")
-    left3 = Label(panes3, text="Left Pane")
-    left3.pack()
-    right3 = Label(panes3, text="Right Pane")
-    right3.pack()
-    panes3.add(left3)
-    panes3.add(right3)
 
-    label0tab3 = Label(right3, text="List of products:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
-    S3 = Scrollbar(right3)
-    T3 = Text(right3, height=4, width=50)
+    frame1t3=Frame(tab3, bd=3, relief="groove")
+    label0tab3 = Label(frame1t3, text="List of products:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
+    S3 = Scrollbar(frame1t3)
+    T3 = Text(frame1t3, height=4, width=50)
     S3.pack(side=RIGHT, fill=Y)
     T3.pack(side=LEFT, fill=Y)
     S3.config(command=T3.yview)
-    T3.config(yscrollcommand=S3.set)
-    currentProducts = pos.getAllProductsNames()
-    quote ="Product SKU      NAME\n"
-    for key in currentProducts:
-        quote = quote + str(key) + "    " + currentProducts[key] + "\n"
+    T3.config(yscrollcommand=S.set)
+    quote = pos.getAllProductsNames()
     T3.insert(END, quote)
+    sep1t3=ttk.Separator(tab3,orient=VERTICAL)
 
-    label1tab3 = Label(left3, text="Register new product:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
-    label2tab3 = Label(left3, text="SKU: ", font=("Helvetica", 10), fg="black").pack()
-    SKU = Entry(left3).pack()
-    label3tab3 = Label(left3, text="Price: ", font=("Helvetica", 10), fg="black").pack()
-    Price = Entry(left3).pack()
-    label4tab3 = Label(left3, text="Name: ", font=("Helvetica", 10), fg="black").pack()
-    Price = Entry(left3).pack()
-    Button(left3, text="Register new product", command=(lambda: write("New Product Registered"))).pack()
+    frame2t3=Frame(tab3, bd=3, relief="groove")
+    label1tab3 = Label(frame2t3, text="Register new product:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
+    label2tab3 = Label(frame2t3, text="SKU: ", font=("Helvetica", 10), fg="black").pack()
+    SKUEntryThirdTab = Entry(frame2t3)
+    SKUEntryThirdTab.pack()
+    label3tab3 = Label(frame2t3, text="Name: ", font=("Helvetica", 10), fg="black").pack()
+    productNameEntryThirdTab = Entry(frame2t3)
+    productNameEntryThirdTab.pack()
+    label4tab3 = Label(frame2t3, text="Price: ", font=("Helvetica", 10), fg="black").pack()
+    priceEntryThirdTab = Entry(frame2t3)
+    priceEntryThirdTab.pack()
+
+    productResultLabel = Label(frame2t3, text="")
+    productResultLabel.pack()
+    Button(frame2t3, text="Register new product", command=addProduct).pack()
+
+
+# Position
+
+    frame1t3.grid(padx=10, pady=10, row=1, column=2)
+    #label0tab2.grid(row=1, column=2)
+    #When it works position rest of elements
+    sep1t3.grid(column=4,row=1, rowspan=20, sticky="ns")
+
+    frame2t3.grid(padx=10, pady=10, row=1, column=6)
+    #label1tab2.grid(row=1, column=6)
+    #when it works position rest of elements
+
 
     #Cuarta tab
     tab4 = Tab(root, "Reports")
