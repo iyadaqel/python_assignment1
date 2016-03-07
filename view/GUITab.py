@@ -112,32 +112,28 @@ if __name__ == '__main__':
     Button(tab1, text="Register", command=(lambda: write("Sale Registered"))).pack(side= RIGHT, expand=YES)
     '''
     tab1 = Tab(root, "Sales")
-    etiqueta11 = Label(tab1, text="Register a Sale: ", font=("Helvetica", 20))
-    marco11=Frame(tab1, bd=5, relief="groove")
-    etiqueta21 = Label(marco11, text="User ID:")
-    entrada11 = Entry(marco11, width=18)
-    etiqueta31 = Label(marco11, text="SKU/Price:")
-    entrada21 = Entry(marco11, width=18)
-    etiqueta41 = Label(marco11, text="Amount:")
-    entrada31 = Entry(marco11, width=18)
-    etiqueta51 = Label(marco11, text="Ciudad:")
-    entrada41 = Entry(marco11, width=18)
-    chButton=Checkbutton(marco11, text="cc")
-    enviar=Button(marco11, text="Register", command=(lambda: write("Sale Registered")))
+    RegSaleLabel = Label(tab1, text="Register a Sale: ", font=("Helvetica", 20))
+    RegSaleFrame=Frame(tab1, bd=5, relief="groove")
+    UserIdLabel = Label(RegSaleFrame, text="User ID:")
+    UserIdEntry = Entry(RegSaleFrame, width=18)
+    SKULabel = Label(RegSaleFrame, text="SKU/Price:")
+    SKUEntry = Entry(RegSaleFrame, width=18)
+    AmountLabel = Label(RegSaleFrame, text="Amount:")
+    AmountEntry = Entry(RegSaleFrame, width=18)
+    chButton=Checkbutton(RegSaleFrame, text="cc")
+    RegistSale=Button(RegSaleFrame, text="Register", command=(lambda: write("Sale Registered")))
 
 # Posicionamiento
 
-    etiqueta11.grid(row=0, column=1, pady=5)
-    marco11.grid(padx=10, pady=10, row=1, column=1)
-    etiqueta21.grid(row=0, column=1)
-    entrada11.grid(row=0, column=2, padx=10)
-    etiqueta31.grid(row=1, column=1)
-    entrada21.grid(row=1, column=2)
-    etiqueta41.grid(row=2, column=1)
-    entrada31.grid(row=2, column=2)
-    etiqueta51.grid(row=3, column=1)
-    entrada41.grid(row=3, column=2)
-    enviar.grid(row=4, column=2, pady=8)
+    RegSaleLabel.grid(row=0, column=1, pady=5)
+    RegSaleFrame.grid(padx=10, pady=10, row=1, column=1)
+    UserIdLabel.grid(row=0, column=1)
+    UserIdEntry.grid(row=0, column=2, padx=10)
+    SKULabel.grid(row=1, column=1)
+    SKUEntry.grid(row=1, column=2)
+    AmountLabel.grid(row=2, column=1)
+    AmountEntry.grid(row=2, column=2)
+    RegistSale.grid(row=4, column=2, pady=8)
     chButton.grid(row=4, column=1)
 
     #Second Tab
@@ -211,37 +207,37 @@ if __name__ == '__main__':
 
     #Cuarta tab
     tab4 = Tab(root, "Reports")
-    etiqueta1 = Label(tab4, text="REPORTS ", font=("Helvetica", 30), fg='pink')
+    MainLabel = Label(tab4, text="REPORTS ", font=("Helvetica", 30), fg='pink')
 
 
-    marco1=Frame(tab4, bd=3, relief="groove")
-    etiqueta2 = Label(marco1, text="Cash vs. CC")
+    CashFrame=Frame(tab4, bd=3, relief="groove")
+    CashLabel = Label(CashFrame, text="Cash vs. CC")
     sep1=ttk.Separator(tab4,orient=VERTICAL)
 
-    marco2=Frame(tab4, bd=3, relief="groove")
-    etiqueta3 = Label(marco2, text="Customers")
+    CustomerFrame=Frame(tab4, bd=3, relief="groove")
+    CustomerLabel = Label(CustomerFrame, text="Customers")
     sep2=ttk.Separator(tab4,orient=VERTICAL)
 
-    marco3=Frame(tab4, bd=3, relief="groove")
-    etiqueta4 = Label(marco3, text="General Sales")
+    GSFrame=Frame(tab4, bd=3, relief="groove")
+    GSLabel = Label(GSFrame, text="General Sales")
     sep3=ttk.Separator(tab4,orient=VERTICAL)
 
 
 # Posicionamiento
 
-    etiqueta1.grid(row=0, column=6, pady=10)
+    MainLabel.grid(row=0, column=6, pady=10)
 
-    marco1.grid(padx=10, pady=10, row=1, column=2)
-    etiqueta2.grid(row=1, column=2)
+    CashFrame.grid(padx=10, pady=10, row=1, column=2)
+    CashLabel.grid(row=1, column=2)
     sep1.grid(column=4,row=1, rowspan=20, sticky="ns")
 
-    marco2.grid(padx=10, pady=10, row=1, column=6)
-    etiqueta3.grid(row=1, column=6)
+    CustomerFrame.grid(padx=10, pady=10, row=1, column=6)
+    CustomerLabel.grid(row=1, column=6)
     sep2.grid(column=8,row=1, rowspan=20, sticky="ns")
 
 
-    marco3.grid(padx=10, pady=10, row=1, column=10)
-    etiqueta4.grid(row=0, column=10)
+    GSFrame.grid(padx=10, pady=10, row=1, column=10)
+    GSLabel.grid(row=0, column=10)
     #sep3.grid(column=6,row=1, rowspan=20, sticky="ns")
 
     '''
