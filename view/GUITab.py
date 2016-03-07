@@ -208,31 +208,38 @@ if __name__ == '__main__':
 
     #Cuarta tab
     tab4 = Tab(root, "Reports")
-    etiqueta1 = Label(tab4, text="REPORTS ", font=("Helvetica", 20))
+    etiqueta1 = Label(tab4, text="REPORTS ", font=("Helvetica", 30), fg='pink')
+
 
     marco1=Frame(tab4, bd=3, relief="groove")
     etiqueta2 = Label(marco1, text="Cash vs. CC")
+    sep1=ttk.Separator(tab4,orient=VERTICAL)
 
     marco2=Frame(tab4, bd=3, relief="groove")
     etiqueta3 = Label(marco2, text="Customers")
+    sep2=ttk.Separator(tab4,orient=VERTICAL)
 
     marco3=Frame(tab4, bd=3, relief="groove")
     etiqueta4 = Label(marco3, text="General Sales")
+    sep3=ttk.Separator(tab4,orient=VERTICAL)
 
 
 # Posicionamiento
 
-    etiqueta1.grid(row=0, column=2, pady=10)
+    etiqueta1.grid(row=0, column=6, pady=10)
 
-    marco1.grid(padx=10, pady=10, row=1, column=1)
-    etiqueta2.grid(row=0, column=1)
+    marco1.grid(padx=10, pady=10, row=1, column=2)
+    etiqueta2.grid(row=1, column=2)
+    sep1.grid(column=4,row=1, rowspan=20, sticky="ns")
 
-    marco2.grid(padx=10, pady=10, row=1, column=2)
-    etiqueta3.grid(row=0, column=1)
+    marco2.grid(padx=10, pady=10, row=1, column=6)
+    etiqueta3.grid(row=1, column=6)
+    sep2.grid(column=8,row=1, rowspan=20, sticky="ns")
 
-    marco3.grid(padx=10, pady=10, row=1, column=3)
-    etiqueta4.grid(row=0, column=1)
 
+    marco3.grid(padx=10, pady=10, row=1, column=10)
+    etiqueta4.grid(row=0, column=10)
+    #sep3.grid(column=6,row=1, rowspan=20, sticky="ns")
 
     '''
     panes = PanedWindow(tab4)
