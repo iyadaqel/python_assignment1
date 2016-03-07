@@ -26,6 +26,9 @@ from tkinter import *
 from tkinter import ttk
 BASE = RAISED
 SELECTED = FLAT
+from tkinter import filedialog
+from tkinter.filedialog import askdirectory
+from tkinter.filedialog import askopenfilename
 
 # a base tab class
 class Tab(Frame):
@@ -257,12 +260,35 @@ if __name__ == '__main__':
     Button(tab4, text="Get", command=(lambda: write(txt.get('1.0', END).strip()))).pack(side=BOTTOM, expand=YES, fill=BOTH)
     '''
     tab5 = Tab(root, "Settings")
-    Label(tab5, text="Hola bebes", bg='black', fg='#3366ff').pack(side=TOP, fill=BOTH, expand=YES)
-    txt = Text(tab5, width=50, height=20)
-    txt.focus()
-    txt.pack(side=LEFT, fill=X, expand=YES)
-    Button(tab5, text="Get", command=(lambda: write(txt.get('1.0', END).strip()))).pack(side=BOTTOM, expand=YES, fill=BOTH)
-
+    def askFolder():
+        dirname = askdirectory()
+        print(dirname)
+      
+    def askFile():
+        filepath = askopenfilename()
+        print(filepath)
+    
+    tab5label0 = Label(tab5, text="Back-up file: ", font=("Helvetica", 20))
+    frametab5=Frame(tab5, bd=5, relief="groove")
+    tab5label1 = Label(frametab5, text="Browse File")
+    tab5label2 = Label(frametab5, text="Browse Folder")
+    tab5label3 = Label(frametab5, text="Download the back-up file")
+    tab5label4 = Label(frametab5, text="Change background theme")
+    Button1=Button(frametab5, text="Browse File", command=askFile)
+    Button2=Button(frametab5, text="Browse Folder", command=askFolder)
+    Button3=Button(frametab5, text="Download")
+    Button4=Button(frametab5, text="Change the Theme")
+    tab5label0.grid(row=0, column=1, pady=5)
+    frametab5.grid(padx=10, pady=10, row=1, column=1)
+    tab5label1.grid(row=1, column=1)
+    tab5label2.grid(row=2, column=1)
+    tab5label3.grid(row=3, column=1)
+    tab5label4.grid(row=4, column=1)
+    Button1.grid(row=1, column=3)
+    Button2.grid(row=2, column=3)
+    Button3.grid(row=3, column=3)
+    Button4.grid(row=4, column=3)
+    
     bar.add(tab1)                   # add the tabs to the tab bar
     bar.add(tab2)
     bar.add(tab3)
