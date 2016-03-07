@@ -5,12 +5,17 @@ from model.customerModel import Customer
 from model.productModel import  Product
 from model.saleModel import Sale
 
+
 #First time you load the program initate all these.
 status = {}
 
+#Still need to implement the Summary
 
-def addSale(customerID=1 , productSKU = 123 , cc=0):
+def addSale(customerID , productSKU , cc):
         #Do some logic here and then send it to Sale(Product,PayMethod,Customer , total)
+        result = {}
+        result['error'] = False
+        result['message'] = ""
 
         #Get the customer
         customer = Customer.searchCustomerByID(customerID)
@@ -22,7 +27,8 @@ def addSale(customerID=1 , productSKU = 123 , cc=0):
         if(product != False):
             total = product.price
         else:
-            total = 0
+            result['error'] = True
+            result['message'] = " Wrong SKU "
 
         if(cc==1):
             payMethod = "Credit Card"
@@ -30,12 +36,37 @@ def addSale(customerID=1 , productSKU = 123 , cc=0):
             payMethod = "Cash"
 
         #Create the Sale object
-        Sale(product , payMethod , customer , total)
+        if(result['error'] != True):
+            Sale(product , payMethod , customer , total)
+            result['message'] = "Sale Added Successfuly. VIVAAA Pythunicorns"
+            return result
+        else:
+            return result
 
 
+def addCustomer(customerID , name):
+        result ={}
+        Customer(customerID , name)
+        result['error'] = True
+        result['message'] = "Customer Added Successfuly. VIVAAA Pythunicorns"
+        return result
 
-def addCustomer(customerID=0 , name=""):
-    Customer(customerID , name)
+
+def getAllCustomersNames():
+    customerNames = {}
+    customers = Customer.getCustomerList()
+    for key in customers:
+        customerNames[key] = customers[key].customerName
+    return customerNames
+
+
+def getAllProductsNames():
+    productNames = {}
+    products = Product.getProductList()
+    for key in products:
+        productNames[key] = products[key].name
+    return productNames
+
 
 
 def generateCCReport():

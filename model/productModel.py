@@ -20,14 +20,15 @@ class Product (object):
 
 
                def __str__(self):
-                              rep ="#SKU:" + self.__SKU + " #Price:"+ self.__price
+                              rep ="#SKU:" + str(self.SKU) + " #Price:"+ str(self.price)
                               return rep
 
                def getProductBySKU(productSKU):
+                   productSKU = int(productSKU)
                    if(productSKU in Product.products):
                        return Product.products[productSKU]
                    else:
-                      return False
+                       return False
 
 
 
