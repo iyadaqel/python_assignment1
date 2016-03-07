@@ -78,15 +78,18 @@ class TabBar(Frame):
 
 		self.buttons[name].config(relief=SELECTED)					# set it to the selected style
 
+
+
 if __name__ == '__main__':
     def write(x): print (x)
 
     root = Tk()
+    #root.geometry('700x300')
     root.title("Pythunicors POS")
     bar = TabBar(root, "Sales")
     tab1= Tab(root , "Sales")
 
-
+    '''
     #First tab
     label1tab1 = Label(tab1, text="Register a Sale:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
 
@@ -104,7 +107,35 @@ if __name__ == '__main__':
     Checkbutton(tab1, text="cc").pack(side=LEFT)
 
     Button(tab1, text="Register", command=(lambda: write("Sale Registered"))).pack(side= RIGHT, expand=YES)
+    '''
+    tab1 = Tab(root, "Sales")
+    etiqueta11 = Label(tab1, text="Register a Sale: ", font=("Helvetica", 20))
+    marco11=Frame(tab1, bd=5, relief="groove")
+    etiqueta21 = Label(marco11, text="User ID:")
+    entrada11 = Entry(marco11, width=18)
+    etiqueta31 = Label(marco11, text="SKU/Price:")
+    entrada21 = Entry(marco11, width=18)
+    etiqueta41 = Label(marco11, text="Amount:")
+    entrada31 = Entry(marco11, width=18)
+    etiqueta51 = Label(marco11, text="Ciudad:")
+    entrada41 = Entry(marco11, width=18)
+    chButton=Checkbutton(marco11, text="cc")
+    enviar=Button(marco11, text="Register", command=(lambda: write("Sale Registered")))
 
+# Posicionamiento
+
+    etiqueta11.grid(row=0, column=1, pady=5)
+    marco11.grid(padx=10, pady=10, row=1, column=1)
+    etiqueta21.grid(row=0, column=1)
+    entrada11.grid(row=0, column=2, padx=10)
+    etiqueta31.grid(row=1, column=1)
+    entrada21.grid(row=1, column=2)
+    etiqueta41.grid(row=2, column=1)
+    entrada31.grid(row=2, column=2)
+    etiqueta51.grid(row=3, column=1)
+    entrada41.grid(row=3, column=2)
+    enviar.grid(row=4, column=2, pady=8)
+    chButton.grid(row=4, column=1)
 
     #Second Tab
     tab2 = Tab(root, "Customers")
@@ -177,16 +208,41 @@ if __name__ == '__main__':
 
     #Cuarta tab
     tab4 = Tab(root, "Reports")
+    etiqueta1 = Label(tab4, text="REPORTS ", font=("Helvetica", 20))
 
+    marco1=Frame(tab4, bd=3, relief="groove")
+    etiqueta2 = Label(marco1, text="Cash vs. CC")
+
+    marco2=Frame(tab4, bd=3, relief="groove")
+    etiqueta3 = Label(marco2, text="Customers")
+
+    marco3=Frame(tab4, bd=3, relief="groove")
+    etiqueta4 = Label(marco3, text="General Sales")
+
+
+# Posicionamiento
+
+    etiqueta1.grid(row=0, column=2, pady=10)
+
+    marco1.grid(padx=10, pady=10, row=1, column=1)
+    etiqueta2.grid(row=0, column=1)
+
+    marco2.grid(padx=10, pady=10, row=1, column=2)
+    etiqueta3.grid(row=0, column=1)
+
+    marco3.grid(padx=10, pady=10, row=1, column=3)
+    etiqueta4.grid(row=0, column=1)
+
+
+    '''
     panes = PanedWindow(tab4)
-
     #ttk.Label(tab4, text='Heading Here').grid(row=1, column=3)
     ttk.Separator(tab4,orient=VERTICAL).grid(column=2, rowspan=20, sticky="ns")
    # ttk.Label(tab4, text='Heading Here').grid(row=3, column=1)
     ttk.Separator(tab4,orient=VERTICAL).grid(column=3, rowspan=20, sticky="ns")
     ttk.Label(tab4, text='Heading Here').grid(row=10, column=6)
 
-    '''
+
     Label(tab4, text="CC vs. Cash", bg='black', fg='#3366ff').pack(side=TOP, fill=BOTH, expand=YES)
     txt = Text(tab4, width=50, height=20)
     txt.focus()
