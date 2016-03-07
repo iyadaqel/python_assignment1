@@ -108,18 +108,18 @@ if __name__ == '__main__':
 
     #Second Tab
     tab2 = Tab(root, "Customers")
-    panes = PanedWindow(tab2)
-    panes.pack(fill="both", expand="yes")
-    left = Label(panes, text="Left Pane")
-    left.pack()
-    right = Label(panes, text="Right Pane")
-    right.pack()
-    panes.add(left)
-    panes.add(right)
+    panes2 = PanedWindow(tab2)
+    panes2.pack(fill="both", expand="yes")
+    left2 = Label(panes2, text="Left Pane")
+    left2.pack()
+    right2 = Label(panes2, text="Right Pane")
+    right2.pack()
+    panes2.add(left2)
+    panes2.add(right2)
 
-    label0tab2 = Label(right, text="List of customers:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
-    S = Scrollbar(right)
-    T = Text(right, height=4, width=50)
+    label0tab2 = Label(right2, text="List of customers:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
+    S = Scrollbar(right2)
+    T = Text(right2, height=4, width=50)
     S.pack(side=RIGHT, fill=Y)
     T.pack(side=LEFT, fill=Y)
     S.config(command=T.yview)
@@ -127,12 +127,12 @@ if __name__ == '__main__':
     quote = "  USER ID      NAME\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito """
     T.insert(END, quote)
 
-    label1tab2 = Label(left, text="Register a Customer:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
-    label2tab2 = Label(left, text="Customer ID: ", font=("Helvetica", 10), fg="black").pack()
-    user_ID = Entry(left).pack()
-    label3tab2 = Label(left, text="Customer Name: ", font=("Helvetica", 10), fg="black").pack()
-    customerName = Entry(left).pack()
-    Button(left, text="Register new customer", command=(lambda: write("New Customer Registered"))).pack()
+    label1tab2 = Label(left2, text="Register a Customer:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
+    label2tab2 = Label(left2, text="Customer ID: ", font=("Helvetica", 10), fg="black").pack()
+    user_ID = Entry(left2).pack()
+    label3tab2 = Label(left2, text="Customer Name: ", font=("Helvetica", 10), fg="black").pack()
+    customerName = Entry(left2).pack()
+    Button(left2, text="Register new customer", command=(lambda: write("New Customer Registered"))).pack()
 
     '''
     Label(tab2, text="How are you??", bg='black', fg='#3366ff').pack(side=TOP, fill=BOTH, expand=YES)
@@ -146,8 +146,34 @@ if __name__ == '__main__':
     Button(tab2, text="Get", command=(lambda: write(txt.get('1.0', END).strip()))).pack(side=BOTTOM, expand=YES, fill=BOTH)
     '''
     #Third tab
-    tab3 = Tab(root, "Products")
-    Label(tab3, bg='white', text="This tab was given as an argument to the TabBar constructor.\n\nINFO:\n"+info).pack(side=LEFT, expand=YES, fill=BOTH)
+    tab3 = Tab(root, "Product")
+    panes3 = PanedWindow(tab3)
+    panes3.pack(fill="both", expand="yes")
+    left3 = Label(panes3, text="Left Pane")
+    left3.pack()
+    right3 = Label(panes3, text="Right Pane")
+    right3.pack()
+    panes3.add(left3)
+    panes3.add(right3)
+
+    label0tab3 = Label(right3, text="List of products:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
+    S3 = Scrollbar(right3)
+    T3 = Text(right3, height=4, width=50)
+    S3.pack(side=RIGHT, fill=Y)
+    T3.pack(side=LEFT, fill=Y)
+    S3.config(command=T3.yview)
+    T3.config(yscrollcommand=S3.set)
+    quote = "  USER ID      NAME\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito\n numerito    Nombrecito """
+    T3.insert(END, quote)
+
+    label1tab3 = Label(left3, text="Register new product:", font=("Helvetica", 20), fg="black").pack(side=TOP, expand=YES, fill=BOTH)
+    label2tab3 = Label(left3, text="SKU: ", font=("Helvetica", 10), fg="black").pack()
+    SKU = Entry(left3).pack()
+    label3tab3 = Label(left3, text="Price: ", font=("Helvetica", 10), fg="black").pack()
+    Price = Entry(left3).pack()
+    label4tab3 = Label(left3, text="Name: ", font=("Helvetica", 10), fg="black").pack()
+    Price = Entry(left3).pack()
+    Button(left3, text="Register new product", command=(lambda: write("New Product Registered"))).pack()
 
     #Cuarta tab
     tab4 = Tab(root, "Reports")
