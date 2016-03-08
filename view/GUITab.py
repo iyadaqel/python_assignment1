@@ -271,6 +271,9 @@ if __name__ == '__main__':
     def askFile():
         filepath = askopenfilename()
         print(filepath)
+    def saveFile():
+        filename = asksaveasfilename()
+        return open(filename, 'w')
     
     tab5label0 = Label(tab5, text="Back-up file: ", font=("Helvetica", 20))
     frametab5=Frame(tab5, bd=5, relief="groove")
@@ -280,7 +283,7 @@ if __name__ == '__main__':
     tab5label4 = Label(frametab5, text="Change background theme")
     Button1=Button(frametab5, text="Browse File", command=askFile)
     Button2=Button(frametab5, text="Browse Folder", command=askFolder)
-    Button3=Button(frametab5, text="Download", command=asksaveasfilename)
+    Button3=Button(frametab5, text="Download", command=saveFile)
     Button4=Button(frametab5, text="Change the Theme")
     tab5label0.grid(row=0, column=1, pady=5)
     frametab5.grid(padx=10, pady=10, row=1, column=1)
