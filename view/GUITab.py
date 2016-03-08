@@ -10,14 +10,14 @@ from view.Tab import Tab
 from view.Tab import TabBar
 from controller import pos as pos
 from controller import initialise as i
-#from PIL import ImageTk, Image
+from PIL import ImageTk, Image
 
 i.intialize()
 
-# matplotlib.use('TkAgg')
-# import matplotlib, numpy, sys
-# from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-# from matplotlib.figure import Figure
+#matplotlib.use('TkAgg')
+import matplotlib, numpy, sys
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
 
 
 if __name__ == '__main__':
@@ -205,28 +205,28 @@ if __name__ == '__main__':
     GSLabel = Label(GSFrame, text="General Sales")
     sep3=ttk.Separator(tab4,orient=VERTICAL)
 
-    # #Create the second plot
-    # f = Figure(figsize=(3,2), dpi=100, facecolor="white")
-    # ax = f.add_subplot(111)
-    #
-    # data = (20, 35, 30, 35, 27)
-    #
-    # ind = numpy.arange(5)  # the x locations for the groups
-    # width = .5
-    #
-    # rects1 = ax.bar(ind, data, width)
-    #
-    # canvas = FigureCanvasTkAgg(f, master=tab4)
-    # canvas.show()
-    #
+    #Create the second plot
+    f = Figure(figsize=(3,2), dpi=100, facecolor="white")
+    ax = f.add_subplot(111)
+
+    data = (20, 35, 30, 35, 27)
+
+    ind = numpy.arange(5)  # the x locations for the groups
+    width = .5
+
+    rects1 = ax.bar(ind, data, width)
+
+    canvas = FigureCanvasTkAgg(f, master=tab4)
+    canvas.show()
+
     #Create the first plot
     def prop(n):
         return 360.0 * n / 1000
 
     #Label(tab4, text='Credit Card vs Cash').grid()
-    # p = Canvas(width=154, height=154, master=tab4)
-    # p.create_arc((2,2,152,152), fill="#ffa0ad", outline="#ffa0ad", start=prop(0), extent = prop(200))
-    # p.create_arc((2,2,152,152), fill="#9cd9f6", outline="#9cd9f6", start=prop(200), extent = prop(800))
+    p = Canvas(width=154, height=154, master=tab4)
+    p.create_arc((2,2,152,152), fill="#ffa0ad", outline="#ffa0ad", start=prop(0), extent = prop(200))
+    p.create_arc((2,2,152,152), fill="#9cd9f6", outline="#9cd9f6", start=prop(200), extent = prop(800))
 
 # Posicionamiento
 
@@ -234,12 +234,12 @@ if __name__ == '__main__':
 
     CashFrame.grid(padx=10, pady=10, row=1, column=2)
     CashLabel.grid(row=1, column=2)
-   # p.grid(row=2, column=2)
+    p.grid(row=2, column=2)
     sep1.grid(column=4,row=1, rowspan=20, sticky="ns")
 
     CustomerFrame.grid(padx=10, pady=10, row=1, column=6)
     CustomerLabel.grid(row=1, column=6)
-    #canvas.get_tk_widget().grid(row=2, column=6)
+    canvas.get_tk_widget().grid(row=2, column=6)
     sep2.grid(column=8,row=1, rowspan=20, sticky="ns")
 
 
