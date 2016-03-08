@@ -10,7 +10,6 @@ from tkinter import ttk
 from tkinter import filedialog
 from tkinter.filedialog import askdirectory
 from tkinter.filedialog import askopenfilename
-from tkinter.filedialog import asksaveasfilename
 
 win_root = tk.Tk()
 win_root.title("Settings")
@@ -48,11 +47,15 @@ def saveFile():
     
 
 # Buttons
-action = ttk.Button(win_root, text="Browse File", command=askFile)
+action = ttk.Button(win_root, text="Browse File", command=askFile())
 action.grid(column=1 , row=0)
-action = ttk.Button(win_root, text="Browse Folder", command=askFolder)
+action = ttk.Button(win_root, text="Browse Folder", command=askFolder())
 action.grid(column=1 , row=1)
+<<<<<<< HEAD
 action = ttk.Button(win_root, text="Download", command=saveFile)
+=======
+action = ttk.Button(win_root, text="Download")
+>>>>>>> origin/master
 action.grid(column=1 , row=2)
 action = ttk.Button(win_root, text="Change the Theme")
 action.grid(column=1 , row=3)
