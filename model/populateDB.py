@@ -8,18 +8,6 @@ import sqlite3
 
 conn = sqlite3.connect('pos.db')
 
-
-conn.execute(''' DROP TABLE  IF EXISTS PRODUCT; ''')
-conn.execute(''' DROP TABLE  IF EXISTS CUSTOMER; ''')
-conn.execute(''' DROP TABLE  IF EXISTS SALE; ''')
-
-
-conn.execute('CREATE  TABLE PRODUCT (SKU CHAR(50) PRIMARY KEY NOT NULL, NAME TEXT NOT NULL, PRICE INT NOT NULL, ADDRESS CHAR(50));')
-conn.execute('CREATE  TABLE CUSTOMER  (customerID CHAR(50) PRIMARY KEY     NOT NULL, customerName  TEXT  NOT NULL);')
-conn.execute('CREATE  TABLE SALE (ID INTEGER PRIMARY KEY AUTOINCREMENT, paymethod CHAR(50) NOT NULL, customerID CHAR(50) NOT NULL, productID CHAR(50) NOT NULL, total    INT NOT NULL ,date CHAR(50));')
-
-
-
 conn.execute("INSERT INTO CUSTOMER (customerID,customerName) \
       VALUES (1, 'IYAD')");
 
@@ -60,7 +48,7 @@ for sale in sales:
     total = str(sale.total)
     conn.execute("INSERT INTO SALE (ID, paymethod, customerID , productID , total) VALUES (NULL,'" +
                  paymethod + "','" + customerID + "','" + productID + "','" + total + "')")
-
+    conn.commit()
 
 sales = conn.execute("SELECT * FROM SALE")
 for sale in sales:

@@ -23,6 +23,7 @@ def addSale(customerID , productSKU , cc):
              customer = Customer.searchCustomerByID(0)
 
         #Get the product
+        productSKU = int(productSKU)
         product = Product.getProductBySKU(productSKU)
         if(product != False):
             total = product.price
@@ -53,6 +54,8 @@ def addCustomer(customerID , name):
 
 def addProduct(SKU, name, price):
         result ={}
+        SKU = int(SKU)
+
         Product(SKU , name , price)
         result['error'] = False
         result['message'] = "Product Added Successfuly. VIVAAA Pythunicorns"

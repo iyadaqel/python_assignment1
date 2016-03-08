@@ -1,3 +1,4 @@
+import sqlite3
 class Customer(object):
     total=0
     customers={}
@@ -8,7 +9,7 @@ class Customer(object):
         self.customerName=customerName
         Customer.total+=1
         Customer.customers[customerID] = self
-      #  Customer.customers.append(self)
+        Customer.insertIntoDB(self)
 
 
     def totalCustomers(self):
@@ -23,9 +24,19 @@ class Customer(object):
     @staticmethod
     def getCustomerList():
         return Customer.customers
+        # conn = sqlite3.connect('pos.db')
+        # #conn.execute("INSERT INTO CUSTOMER (customerID,customerName) VALUES ('" + str(self.customerID) + "', '" + self.customerName + "')")
+        # print(conn.execute("SELECT * FROM CUSTOMER"))
+
 
     def searchCustomerByID(customerID):
         if(customerID in Customer.customers):
             return Customer.customers[customerID]
         else:
             return False
+
+    def insertIntoDB(self):
+        conn = sqlite3.connect('../pos.db')
+        conn.execute("INSERT INTO CUSTOMER (customerID,customerName) VALUES ('" + str(self.customerID) + "', '" + self.customerName + "')")
+        conn.commit()
+        conn.close()

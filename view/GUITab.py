@@ -159,7 +159,7 @@ if __name__ == '__main__':
     priceEntryThirdTab = Entry(frame2t3)
     priceEntryThirdTab.pack()
 
-    productResultLabel = Label(frame2t3, text="")
+    productResultLabel = Label(frame2t2, text="")
     productResultLabel.pack()
     Button(frame2t3, text="Register new product", command=addProduct).pack()
 
