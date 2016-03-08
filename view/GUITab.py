@@ -57,9 +57,7 @@ if __name__ == '__main__':
 
 
     #Defining the window and the Sale
-    #root.geometry('700x300')
     root = Tk()
-    root.geometry("700x450")
     root.title("PYTHUNICORNS POS")
     bar = TabBar(root, "Sales")
     tab1 = Tab(root, "Sales")
