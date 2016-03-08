@@ -9,6 +9,7 @@ from view.Tab import Tab
 from view.Tab import TabBar
 from controller import pos as pos
 from controller import initialise as i
+from PIL import ImageTk, Image
 
 i.intialize()
 
@@ -59,6 +60,7 @@ if __name__ == '__main__':
     #Defining the window and the Sale
     root = Tk()
     root.title("PYTHUNICORNS POS")
+    #root.configure(background='pink')
     bar = TabBar(root, "Sales")
     tab1 = Tab(root, "Sales")
     tab1.grid(row=0, column=3, columnspan=2,sticky=N+S+E+W)
@@ -213,6 +215,19 @@ if __name__ == '__main__':
     GSFrame.grid(padx=10, pady=10, row=1, column=10)
     GSLabel.grid(row=0, column=10)
     #sep3.grid(column=6,row=1, rowspan=20, sticky="ns")
+
+
+
+    path = "/Users/carmennicolasbaixauli/Desktop/ho.png"
+
+    #Creates a Tkinter-compatible photo image, which can be used everywhere Tkinter expects an image object.
+    img = ImageTk.PhotoImage(Image.open(path))
+
+    #The Label widget is a standard Tkinter widget used to display a text or image on the screen.
+    panel = Label(tab4, image = img)
+
+    #The Pack geometry manager packs widgets in rows or columns.
+    panel.pack(side = "bottom", fill = "both", expand = "yes")
 
     '''
     panes = PanedWindow(tab4)
