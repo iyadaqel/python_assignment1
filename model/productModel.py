@@ -17,12 +17,9 @@ class Product (object):
 
     @staticmethod
     def getProductList():
-        productsFromDB={}
         conn = sqlite3.connect('../pos.db')
         rows= conn.execute("SELECT * FROM PRODUCT")
-        for row in rows:
-            productsFromDB[row[0]] = Product.getProductBySKU(row[0])
-        return productsFromDB
+        return rows
         #return Product.products
 
 
@@ -31,11 +28,15 @@ class Product (object):
         return rep
 
     def getProductBySKU(productSKU):
-        productSKU = int(productSKU)
-        if(productSKU in Product.products):
-            return Product.products[productSKU]
-        else:
+        conn = sqlite3.connect('../pos.db')
+        cursor = conn.cursor()
+        query = "SELECT * FROM PRODUCT WHERE SKU =" + str(productSKU)
+        cursor.execute(query)
+        row = cursor.fetchone()
+        if row is None:
             return False
+        else:
+            return row
 
     def insertIntoDB(self):
         conn = sqlite3.connect('../pos.db')

@@ -24,9 +24,11 @@ def addSale(customerID , productSKU , cc):
 
         #Get the product
         productSKU = int(productSKU)
+
+        #pass the product row to the Sale module
         product = Product.getProductBySKU(productSKU)
         if(product != False):
-            total = product.price
+            total = product[2]
         else:
             result['error'] = True
             result['message'] = " Wrong SKU "
@@ -66,8 +68,9 @@ def getAllCustomersNames():
     customerNames = {}
     customers = Customer.getCustomerList()
     quote ="USER ID      NAME\n"
-    for key in customers:
-        quote = quote + str(key) + "    " +  customers[key].customerName +  "\n"
+    for row in customers:
+        quote = quote + row[0] + "    " +  row[1] +  "\n"
+        #quote = quote + str(key) + "    " +  customers[key].customerName +  "\n"
     return quote
 
 
@@ -75,10 +78,10 @@ def getAllProductsNames():
     productNames = {}
     products = Product.getProductList()
     quote ="Product SKU      NAME\n"
-    for key in products:
-        quote = quote + str(key) + "    " + products[key].name + "\n"
+    for row in products:
+        quote = quote + row[0] + "    " +  row[1] + "\n"
+       # quote = quote + str(key) + "    " + products[key].name + "\n"
     return quote
-
 
 
 def generateCCReport():
