@@ -17,9 +17,12 @@ class Product (object):
 
     @staticmethod
     def getProductList():
+        productsFromDB={}
         conn = sqlite3.connect('../pos.db')
         rows= conn.execute("SELECT * FROM PRODUCT")
-        return rows
+        for row in rows:
+            productsFromDB[row[0]] = Product.getProductBySKU(row[0])
+        return productsFromDB
         #return Product.products
 
 

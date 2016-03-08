@@ -23,11 +23,10 @@ class Customer(object):
 
     @staticmethod
     def getCustomerList():
-        #return Customer.customers
-        conn = sqlite3.connect('../pos.db')
-        rows = conn.execute("SELECT * FROM CUSTOMER")
-        return rows
-
+        return Customer.customers
+        # conn = sqlite3.connect('pos.db')
+        # #conn.execute("INSERT INTO CUSTOMER (customerID,customerName) VALUES ('" + str(self.customerID) + "', '" + self.customerName + "')")
+        # print(conn.execute("SELECT * FROM CUSTOMER"))
 
 
     def searchCustomerByID(customerID):
