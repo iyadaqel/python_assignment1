@@ -3,6 +3,8 @@ from tkinter import ttk
 from tkinter import filedialog
 from tkinter.filedialog import askdirectory
 from tkinter.filedialog import askopenfilename
+from tkinter.filedialog import asksaveasfilename
+import view
 from view.Tab import Tab
 from view.Tab import TabBar
 from controller import pos as pos
@@ -243,7 +245,7 @@ if __name__ == '__main__':
     tab5label4 = Label(frametab5, text="Change background theme")
     Button1=Button(frametab5, text="Browse File", command=askFile)
     Button2=Button(frametab5, text="Browse Folder", command=askFolder)
-    Button3=Button(frametab5, text="Download")
+    Button3=Button(frametab5, text="Download", command=asksaveasfilename)
     Button4=Button(frametab5, text="Change the Theme")
     tab5label0.grid(row=0, column=1, pady=5)
     frametab5.grid(padx=10, pady=10, row=1, column=1)
