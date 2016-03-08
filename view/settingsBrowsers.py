@@ -45,6 +45,7 @@ def askFile():
 def saveFile():
     filename = asksaveasfilename()
     return open(filename, 'w')
+    
 
 # Buttons
 action = ttk.Button(win_root, text="Browse File", command=askFile)
