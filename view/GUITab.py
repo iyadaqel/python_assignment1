@@ -13,6 +13,10 @@ from PIL import ImageTk, Image
 
 i.intialize()
 
+import matplotlib, numpy, sys
+matplotlib.use('TkAgg')
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
 
 if __name__ == '__main__':
     def write(x): print (x)
@@ -70,6 +74,7 @@ if __name__ == '__main__':
     #First Tab
     RegSaleLabel = Label(tab1, text="Register a Sale: ", font=("Helvetica", 20))
     RegSaleFrame=Frame(tab1, bd=5, relief="groove", width=1000, height=1000)
+    #RegSaleFrame.config(bg="red")
     UserIdLabel = Label(RegSaleFrame, text="User ID:")
     UserIdEntry = Entry(RegSaleFrame, width=18)
     SKULabel = Label(RegSaleFrame, text="SKU/Price:")
@@ -183,7 +188,7 @@ if __name__ == '__main__':
 
     #Cuarta tab
     tab4 = Tab(root, "Reports")
-    MainLabel = Label(tab4, text="REPORTS ", font=("Helvetica", 30), fg='pink')
+    MainLabel = Label(tab4, text="REPORTS ", font=("Helvetica", 30), fg='deepskyblue4')
 
 
     CashFrame=Frame(tab4, bd=3, relief="groove")
@@ -198,6 +203,28 @@ if __name__ == '__main__':
     GSLabel = Label(GSFrame, text="General Sales")
     sep3=ttk.Separator(tab4,orient=VERTICAL)
 
+    #Create the first plot
+    f = Figure(figsize=(3,2), dpi=100, facecolor="white")
+    ax = f.add_subplot(111)
+
+    data = (20, 35, 30, 35, 27)
+
+    ind = numpy.arange(5)  # the x locations for the groups
+    width = .5
+
+    rects1 = ax.bar(ind, data, width)
+
+    canvas = FigureCanvasTkAgg(f, master=tab4)
+    canvas.show()
+
+    #Create the second plot
+    def prop(n):
+        return 360.0 * n / 1000
+
+    #Label(tab4, text='Credit Card vs Cash').grid()
+    p = Canvas(width=154, height=154, master=tab4)
+    p.create_arc((2,2,152,152), fill="#FAF402", outline="#FAF402", start=prop(0), extent = prop(200))
+    p.create_arc((2,2,152,152), fill="#00AC36", outline="#00AC36", start=prop(200), extent = prop(800))
 
 # Posicionamiento
 
@@ -205,10 +232,12 @@ if __name__ == '__main__':
 
     CashFrame.grid(padx=10, pady=10, row=1, column=2)
     CashLabel.grid(row=1, column=2)
+    canvas.get_tk_widget().grid(row=2, column=2)
     sep1.grid(column=4,row=1, rowspan=20, sticky="ns")
 
     CustomerFrame.grid(padx=10, pady=10, row=1, column=6)
     CustomerLabel.grid(row=1, column=6)
+    p.grid(row=2, column=6)
     sep2.grid(column=8,row=1, rowspan=20, sticky="ns")
 
 
@@ -216,18 +245,6 @@ if __name__ == '__main__':
     GSLabel.grid(row=0, column=10)
     #sep3.grid(column=6,row=1, rowspan=20, sticky="ns")
 
-
-
-    path = "/Users/carmennicolasbaixauli/Desktop/ho.png"
-
-    #Creates a Tkinter-compatible photo image, which can be used everywhere Tkinter expects an image object.
-    img = ImageTk.PhotoImage(Image.open(path))
-
-    #The Label widget is a standard Tkinter widget used to display a text or image on the screen.
-    panel = Label(tab4, image = img)
-
-    #The Pack geometry manager packs widgets in rows or columns.
-    panel.pack(side = "bottom", fill = "both", expand = "yes")
 
     '''
     panes = PanedWindow(tab4)
