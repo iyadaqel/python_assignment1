@@ -10,7 +10,7 @@ from view.Tab import Tab
 from view.Tab import TabBar
 from controller import pos as pos
 from controller import initialise as i
-from PIL import ImageTk, Image
+#from PIL import ImageTk, Image
 
 i.intialize()
 
@@ -171,7 +171,7 @@ if __name__ == '__main__':
     priceEntryThirdTab = Entry(frame2t3)
     priceEntryThirdTab.pack()
 
-    productResultLabel = Label(frame2t2, text="")
+    productResultLabel = Label(frame2t3, text="")
     productResultLabel.pack()
     Button(frame2t3, text="Register new product", command=addProduct).pack()
 

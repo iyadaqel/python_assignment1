@@ -66,17 +66,17 @@ def getAllCustomersNames():
     customerNames = {}
     customers = Customer.getCustomerList()
     quote ="USER ID      NAME\n"
-    for key in customers:
-        quote = quote + str(key) + "    " +  customers[key].customerName +  "\n"
+    for row in customers:
+        quote = quote + str(row[0]) + "    " + row[1] +"\n"
     return quote
 
 
 def getAllProductsNames():
-    productNames = {}
     products = Product.getProductList()
     quote ="Product SKU      NAME\n"
-    for key in products:
-        quote = quote + str(key) + "    " + products[key].name + "\n"
+    for row in products:
+        quote = quote + str(row[0]) + "    " + row[1] +"\n"
+        #quote = quote + str(key) + "    " + products[key].name + "\n"
     return quote
 
 
