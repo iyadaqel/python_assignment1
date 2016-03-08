@@ -4,6 +4,7 @@ from tkinter import filedialog
 from tkinter.filedialog import askdirectory
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import asksaveasfilename
+from pylab import *
 import view
 from view.Tab import Tab
 from view.Tab import TabBar
@@ -17,6 +18,7 @@ import matplotlib, numpy, sys
 matplotlib.use('TkAgg')
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
+
 
 if __name__ == '__main__':
     def write(x): print (x)
@@ -203,7 +205,7 @@ if __name__ == '__main__':
     GSLabel = Label(GSFrame, text="General Sales")
     sep3=ttk.Separator(tab4,orient=VERTICAL)
 
-    #Create the first plot
+    #Create the second plot
     f = Figure(figsize=(3,2), dpi=100, facecolor="white")
     ax = f.add_subplot(111)
 
@@ -217,14 +219,14 @@ if __name__ == '__main__':
     canvas = FigureCanvasTkAgg(f, master=tab4)
     canvas.show()
 
-    #Create the second plot
+    #Create the first plot
     def prop(n):
         return 360.0 * n / 1000
 
     #Label(tab4, text='Credit Card vs Cash').grid()
     p = Canvas(width=154, height=154, master=tab4)
-    p.create_arc((2,2,152,152), fill="#FAF402", outline="#FAF402", start=prop(0), extent = prop(200))
-    p.create_arc((2,2,152,152), fill="#00AC36", outline="#00AC36", start=prop(200), extent = prop(800))
+    p.create_arc((2,2,152,152), fill="#ffa0ad", outline="#ffa0ad", start=prop(0), extent = prop(200))
+    p.create_arc((2,2,152,152), fill="#9cd9f6", outline="#9cd9f6", start=prop(200), extent = prop(800))
 
 # Posicionamiento
 
@@ -232,12 +234,12 @@ if __name__ == '__main__':
 
     CashFrame.grid(padx=10, pady=10, row=1, column=2)
     CashLabel.grid(row=1, column=2)
-    canvas.get_tk_widget().grid(row=2, column=2)
+    p.grid(row=2, column=2)
     sep1.grid(column=4,row=1, rowspan=20, sticky="ns")
 
     CustomerFrame.grid(padx=10, pady=10, row=1, column=6)
     CustomerLabel.grid(row=1, column=6)
-    p.grid(row=2, column=6)
+    canvas.get_tk_widget().grid(row=2, column=6)
     sep2.grid(column=8,row=1, rowspan=20, sticky="ns")
 
 
