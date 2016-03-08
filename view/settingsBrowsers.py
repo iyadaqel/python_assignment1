@@ -42,14 +42,16 @@ def askFile():
     filepath = askopenfilename()
     print(filepath)
 
-
+def saveFile():
+    filename = asksaveasfilename()
+    return open(filename, 'w')
 
 # Buttons
 action = ttk.Button(win_root, text="Browse File", command=askFile)
 action.grid(column=1 , row=0)
 action = ttk.Button(win_root, text="Browse Folder", command=askFolder)
 action.grid(column=1 , row=1)
-action = ttk.Button(win_root, text="Download", command=asksaveasfilename)
+action = ttk.Button(win_root, text="Download", command=saveFile)
 action.grid(column=1 , row=2)
 action = ttk.Button(win_root, text="Change the Theme")
 action.grid(column=1 , row=3)
