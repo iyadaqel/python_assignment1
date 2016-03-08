@@ -57,14 +57,17 @@ if __name__ == '__main__':
     #Defining the window and the Sale
     #root.geometry('700x300')
     root = Tk()
+    root.geometry("700x450")
     root.title("PYTHUNICORNS POS")
     bar = TabBar(root, "Sales")
     tab1 = Tab(root, "Sales")
+    tab1.grid(row=0, column=3, columnspan=2,sticky=N+S+E+W)
+
 
 
     #First Tab
     RegSaleLabel = Label(tab1, text="Register a Sale: ", font=("Helvetica", 20))
-    RegSaleFrame=Frame(tab1, bd=5, relief="groove")
+    RegSaleFrame=Frame(tab1, bd=5, relief="groove", width=1000, height=1000)
     UserIdLabel = Label(RegSaleFrame, text="User ID:")
     UserIdEntry = Entry(RegSaleFrame, width=18)
     SKULabel = Label(RegSaleFrame, text="SKU/Price:")
@@ -77,17 +80,17 @@ if __name__ == '__main__':
     RegistSale=Button(RegSaleFrame, text="Register", command=addSale)
 
 # Positions of the First Tab
-    RegSaleLabel.grid(row=0, column=1, pady=5)
-    RegSaleFrame.grid(padx=10, pady=10, row=1, column=1)
-    UserIdLabel.grid(row=0, column=1)
-    UserIdEntry.grid(row=0, column=2, padx=10)
-    SKULabel.grid(row=1, column=1)
-    SKUEntry.grid(row=1, column=2)
-    AmountLabel.grid(row=2, column=1)
-    AmountEntry.grid(row=2, column=2)
-    resultLabel.grid(row=4 , column=1)
-    RegistSale.grid(row=5, column=2, pady=8)
-    chButton.grid(row=5, column=1)
+    RegSaleLabel.grid(row=0, column=0, columnspan=2,sticky=N+S+E+W)
+    RegSaleFrame.grid(row=1, column=1, sticky=N+S+E+W)
+    UserIdLabel.grid(row=0, column=1, sticky=N+S+E+W)
+    UserIdEntry.grid(row=0, column=2, sticky=N+S+E+W)
+    SKULabel.grid(row=1, column=1, sticky=N+S+E+W)
+    SKUEntry.grid(row=1, column=2, sticky=N+S+E+W)
+    AmountLabel.grid(row=2, column=1, sticky=N+S+E+W)
+    AmountEntry.grid(row=2, column=2, sticky=N+S+E+W)
+    resultLabel.grid(row=4 , column=1, sticky=N+S+E+W)
+    RegistSale.grid(row=5, column=2, sticky=N+S+E+W)
+    chButton.grid(row=5, column=1, sticky=N+S+E+W)
 
 
     #SECOND TAB
@@ -121,12 +124,12 @@ if __name__ == '__main__':
 
 # Position
 
-    frame1t2.grid(padx=10, pady=10, row=1, column=2)
+    frame1t2.grid(row=1, column=2)
     #label0tab2.grid(row=1, column=2)
     #When it works position rest of elements
-    sep1t2.grid(column=4,row=1, rowspan=20, sticky="ns")
+    sep1t2.grid(column=4,row=1, rowspan=20)
 
-    frame2t2.grid(padx=10, pady=10, row=1, column=6)
+    frame2t2.grid(padx=10, row=1, column=6)
     #customerName.grid(row=1,column=2)
     #label1tab2.grid(row=1, column=6)
     #when it works position rest of elements
@@ -166,12 +169,12 @@ if __name__ == '__main__':
 
 # Position
 
-    frame1t3.grid(padx=10, pady=10, row=1, column=2)
+    frame1t3.grid( row=1, column=2)
     #label0tab2.grid(row=1, column=2)
     #When it works position rest of elements
-    sep1t3.grid(column=4,row=1, rowspan=20, sticky="ns")
+    sep1t3.grid(column=4,row=1, rowspan=20 )
 
-    frame2t3.grid(padx=10, pady=10, row=1, column=6)
+    frame2t3.grid(row=1, column=6)
     #label1tab2.grid(row=1, column=6)
     #when it works position rest of elements
 
