@@ -216,6 +216,10 @@ if __name__ == '__main__':
     GSLabel = Label(GSFrame, text="General Sales")
     sep3=ttk.Separator(tab4,orient=VERTICAL)
 
+    #Stats thing
+    StatsFrame=Frame(tab4, bd=3, relief="groove")
+    StatsLabel = Label(StatsFrame, text="General Sales", font=("Helvetica", 20))
+
     #Create the second plot
     f = Figure(figsize=(3,2), dpi=100, facecolor="white")
     ax = f.add_subplot(111)
@@ -226,6 +230,8 @@ if __name__ == '__main__':
     width = .5
 
     rects1 = ax.bar(ind, data, width)
+    rects1[0].set_color('r')
+    rects1[1].set_color('pink')
 
     canvas1 = FigureCanvasTkAgg(f, master=tab4)
     canvas1.show()
@@ -252,6 +258,8 @@ if __name__ == '__main__':
     canvas = FigureCanvasTkAgg(tartita, master=tab4)
     canvas.show()
 
+    #Create a new frame
+
 # Posicionamiento
 
     MainLabel.grid(row=0, column=6, pady=10)
@@ -259,18 +267,20 @@ if __name__ == '__main__':
     CashFrame.grid(padx=10, pady=10, row=1, column=2)
     CashLabel.grid(row=1, column=2)
     canvas.get_tk_widget().grid(row=2, column=2)
-    sep1.grid(column=4,row=1, rowspan=20, sticky="ns")
+    sep1.grid(column=4,row=1, rowspan=3, sticky="ns")
 
     CustomerFrame.grid(padx=10, pady=10, row=1, column=6)
     CustomerLabel.grid(row=1, column=6)
     canvas1.get_tk_widget().grid(row=2, column=6)
-    sep2.grid(column=8,row=1, rowspan=20, sticky="ns")
+    sep2.grid(column=8,row=1, rowspan=3, sticky="ns")
 
 
     GSFrame.grid(padx=10, pady=10, row=1, column=10)
     GSLabel.grid(row=0, column=10)
     #sep3.grid(column=6,row=1, rowspan=20, sticky="ns")
 
+    StatsFrame.grid(row=6, column=6, pady=10)
+    StatsLabel.grid(row=6, column=6)
 
     tab5 = Tab(root, "Settings")
     def askFolder():
