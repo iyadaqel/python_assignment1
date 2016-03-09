@@ -41,6 +41,8 @@ def addSale(customerID , productSKU , cc , amount):
         #Get the product
         productSKU = int(productSKU)
 
+
+
         #pass the product row to the Sale module
         product = Product.getProductBySKU(productSKU)
         if(product != False):
@@ -150,10 +152,7 @@ def generateCCReport():
         else:
             ccSales += sale[4]
 
-    total = ccSales + cashSales
-    cashSalesForPieChart = round((cashSales / total) * 100)
-    ccSalesForPieChart = round((ccSales / total) * 100)
-    return[cashSalesForPieChart ,ccSalesForPieChart ]
+    return[cashSales ,ccSales ]
 
 
 
@@ -177,6 +176,16 @@ def getSalesReports():
 
 def downloadCSVfile():
     csv_file.downloadAllFiles()
+
+
+
+
+def make_autopct(values):
+    def my_autopct(pct):
+        total = sum(values)
+        val = int(round(pct*total/100.0))
+        return '{p:.2f}%  ({v:d})'.format(p=pct,v=val)
+    return my_autopct
 
 
 
