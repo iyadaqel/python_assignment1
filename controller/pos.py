@@ -155,22 +155,14 @@ def generateCCReport():
     ccSalesForPieChart = round((ccSales / total) * 100)
     return[cashSalesForPieChart ,ccSalesForPieChart ]
 
-#STILL NEEDS FIXING
+
+
 def generateCustomerReport():
-    listOfSales = Sale.getSaleList()
-    customersSales = {}
-    keys = customersSales.keys()
+    customerSales = {}
+    listOfSales = Sale.getCustomerSales()
     for sale in listOfSales:
-        customerID = sale.customer.customerID
-        if customerID in keys:
-            customersSales[customerID] = customersSales[customerID] + sale.total
-        else:
-            customersSales[customerID] = 0 + sale.total
-
-    for key, value in customersSales.items():
-        print(Customer.searchCustomerByID(key).customerName, value)
-
-
+        customerSales[sale[0]] = sale[1]
+    return(customerSales)
 
 
 
@@ -186,3 +178,6 @@ def getSalesReports():
 def downloadCSVfile():
     csv_file.downloadAllFiles()
 
+
+
+generateCustomerReport()

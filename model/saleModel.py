@@ -28,6 +28,14 @@ class Sale(object):
         return  ("Customer: " + self.customer.customerName + " bought " +  str(self.product.price) + "€ and paid by "  + self.paymethod  + " at " + self.date)
 
 
+    def getCustomerSales():
+        conn = sqlite3.connect('../pos.db' , timeout=5)
+        rows= conn.execute("SELECT customerID , SUM(total) FROM SALE group by customerID")
+        return rows
+
+
+
+
     def insertIntoDB(self):
         conn = sqlite3.connect('../pos.db' , timeout=5)
         paymethod= str(self.paymethod)
