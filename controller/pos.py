@@ -18,7 +18,7 @@ from model import customerModel
 from model.customerModel import Customer
 from model.productModel import  Product
 from model.saleModel import Sale
-
+from controller import csv_file
 
 #First time you load the program initate all these.
 status = {}
@@ -183,4 +183,6 @@ def getSalesReports():
     return(numbers)
 
 
+def downloadCSVfile():
+    csv_file.downloadAllFiles()
 

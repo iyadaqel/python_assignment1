@@ -20,6 +20,7 @@ from matplotlib.pylab import pie, figure, axes
 if __name__ == '__main__':
     def write(x): print (x)
 
+
     def addSale():
         #Don't forget to check for the values before you submit
 
@@ -284,26 +285,18 @@ if __name__ == '__main__':
         filename = asksaveasfilename()
         return open(filename, 'w')
     
-    tab5label0 = Label(tab5, text="Back-up file: ", font=("Helvetica", 20))
+    tab5label0 = Label(tab5, text="SETTING: ", font=("Helvetica", 20))
     frametab5=Frame(tab5, bd=5, relief="groove")
-    tab5label1 = Label(frametab5, text="Browse File")
-    tab5label2 = Label(frametab5, text="Browse Folder")
-    tab5label3 = Label(frametab5, text="Download the back-up file")
+    tab5label3 = Label(frametab5, text="Download All Data")
     tab5label4 = Label(frametab5, text="Change background theme")
-    Button1=Button(frametab5, text="Browse File", command=askFile)
-    Button2=Button(frametab5, text="Browse Folder", command=askFolder)
-    Button3=Button(frametab5, text="Download", command=saveFile)
+    Button3=Button(frametab5, text="Download", command=pos.downloadCSVfile)
     Button4=Button(frametab5, text="Change the Theme")
     tab5label0.grid(row=0, column=1, pady=5)
     frametab5.grid(padx=10, pady=10, row=1, column=1)
-    tab5label1.grid(row=1, column=1)
-    tab5label2.grid(row=2, column=1)
-    tab5label3.grid(row=3, column=1)
-    tab5label4.grid(row=4, column=1)
-    Button1.grid(row=1, column=3)
-    Button2.grid(row=2, column=3)
-    Button3.grid(row=3, column=3)
-    Button4.grid(row=4, column=3)
+    tab5label3.grid(row=1, column=1)
+    tab5label4.grid(row=2, column=1)
+    Button3.grid(row=1, column=3)
+    Button4.grid(row=2, column=3)
 
     bar.add(tab1)                   # add the tabs to the tab bar
     bar.add(tab2)
