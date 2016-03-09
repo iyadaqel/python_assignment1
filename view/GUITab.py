@@ -217,16 +217,17 @@ if __name__ == '__main__':
     sep3=ttk.Separator(tab4,orient=VERTICAL)
 
     #Stats thing
+    salesStat = pos.getSalesReports()
     StatsFrame=Frame(tab4, bd=3, relief="groove")
     StatsLabel = Label(StatsFrame, text="General Sales", font=("Helvetica", 30))
     StatsLabel1 = Label(StatsFrame, text="Total Sales", font=("Helvetica", 15, "bold"))
-    StatsLabel11 = Label(StatsFrame, text="Total Sales ", font=("Helvetica", 15))
+    StatsLabel11 = Label(StatsFrame, text=salesStat[0], font=("Helvetica", 15))
     StatsLabel2 = Label(StatsFrame, text="Number of Sales", font=("Helvetica", 15, "bold"))
-    StatsLabel21 = Label(StatsFrame, text="Number of Sales", font=("Helvetica", 15))
-    StatsLabel3 = Label(StatsFrame, text="Weekly Sales", font=("Helvetica", 15, "bold"))
-    StatsLabel31 = Label(StatsFrame, text="Weekly Sales", font=("Helvetica", 15))
-    StatsLabel4 = Label(StatsFrame, text="Daily Sales", font=("Helvetica", 15, "bold"))
-    StatsLabel41 = Label(StatsFrame, text="Daily Sales", font=("Helvetica", 15))
+    StatsLabel21 = Label(StatsFrame, text=salesStat[1], font=("Helvetica", 15))
+    StatsLabel3 = Label(StatsFrame, text="Daily Sales", font=("Helvetica", 15, "bold"))
+    StatsLabel31 = Label(StatsFrame, text=salesStat[2], font=("Helvetica", 15))
+    StatsLabel4 = Label(StatsFrame, text="Weekly Sales", font=("Helvetica", 15, "bold"))
+    StatsLabel41 = Label(StatsFrame, text=salesStat[3], font=("Helvetica", 15))
 
 
 
