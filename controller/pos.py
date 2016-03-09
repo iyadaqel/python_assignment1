@@ -26,8 +26,8 @@ status = {}
 #Still need to implement the Summary
 
 def addSale(customerID , productSKU , cc , amount):
-        customerID = customerID.split(' ', 1)[0]
-        productSKU = productSKU.split(' ' ,1)[0]
+        customerID = str(customerID).split(' ', 1)[0]
+        productSKU = str(productSKU).split(' ' ,1)[0]
         #Do some logic here and then send it to Sale(Product,PayMethod,Customer , total)
         result = {}
         result['error'] = False
