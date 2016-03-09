@@ -199,8 +199,5 @@ def getLastDaysSales():
         dateList.append(i)
         salesList.append(sale[1])
         i+=1
-
-    print(dateList )
-    print(salesList)
     return(dateList , salesList)
 

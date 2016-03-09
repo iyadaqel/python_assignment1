@@ -34,7 +34,7 @@ class Customer(object):
     def searchCustomerByID(customerID):
         conn = sqlite3.connect('../pos.db' , timeout=5)
         cursor = conn.cursor()
-        query = "SELECT * FROM CUSTOMER WHERE customerID =" + str(customerID)
+        query = "SELECT * FROM CUSTOMER WHERE customerID ='" + str(customerID) + "'"
         cursor.execute(query)
         row = cursor.fetchone()
         if row is None:

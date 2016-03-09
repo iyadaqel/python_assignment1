@@ -241,11 +241,11 @@ if __name__ == '__main__':
     xlocations = numpy.array(range(len(BarChartData)))+0.5
     width = 0.5
     bar(xlocations, BarChartData, width=width)
-    yticks(range(0, 8))
+    #yticks(range(0, 8))
     xticks(xlocations+ width/2, BarChartlabels)
     xlim(0, xlocations[-1]+width*2)
-    gca().get_xaxis().tick_bottom()
-    gca().get_yaxis().tick_left()
+    #gca().get_xaxis().tick_bottom()
+    #gca().get_yaxis().tick_left()
 
     canvas1 = FigureCanvasTkAgg(f, master=tab4)
     canvas1.show()
@@ -315,18 +315,8 @@ if __name__ == '__main__':
     StatsLabel41.grid(row=11, column=5)
 
     tab5 = Tab(root, "Settings")
-    def askFolder():
-        dirname = askdirectory()
-        print(dirname)
-      
-    def askFile():
-        filepath = askopenfilename()
-        print(filepath)
 
-    def saveFile():
-        filename = asksaveasfilename()
-        return open(filename, 'w')
-    
+
     tab5label0 = Label(tab5, text="SETTING: ", font=("Helvetica", 20))
     frametab5=Frame(tab5, bd=5, relief="groove")
     tab5label3 = Label(frametab5, text="Download All Data")
