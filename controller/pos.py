@@ -74,10 +74,14 @@ def getOnlyCustomersID():
 def addCustomer(customerID , name):
         result ={}
         #Check if the new SKU is already used
+
         IDList = getOnlyCustomersID()
         if customerID in IDList:
             result['error'] = True
             result['message'] = "The ID belongs to an existing user"
+        elif(str(customerID) == "" or str(name) == "" ):
+            result['error'] = True
+            result['message'] = "Empty fields .. Ignacio, are you trying to break the code?"
         else:
             Customer(customerID, name)
             result['error'] = False
@@ -99,6 +103,12 @@ def addProduct(SKU, name, price):
         if SKU in SKUList:
             result['error'] = True
             result['message'] = "The SKU is already in the product database"
+        elif(str(SKU) == "" or str(name) == "" or str(price)=="" ):
+            result['error'] = True
+            result['message'] = "Empty fields .. Ignacio, are you trying to break the code?"
+        elif(int(price) <= 0):
+            result['error'] = True
+            result['message'] = "Ignacio, be reasonable our pos owe you money with this price"
         else:
             Product(SKU, name, price)
             result['error'] = False
