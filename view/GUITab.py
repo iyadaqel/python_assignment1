@@ -1,3 +1,5 @@
+import matplotlib, numpy, sys
+matplotlib.use('TkAgg')
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
@@ -10,10 +12,9 @@ from controller import pos as pos
 from controller import initialise as i
 
 i.intialize()
-#matplotlib.use('TkAgg')
-import matplotlib, numpy, sys
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
+from matplotlib.pylab import pie, figure, axes
 
 
 if __name__ == '__main__':
@@ -229,15 +230,26 @@ if __name__ == '__main__':
     canvas.show()
 
     #Create the first plot
-    def prop(n):
-        return 360.0 * n / 1000
 
-    #Label(tab4, text='Credit Card vs Cash').grid()
-    salesForPieChart = pos.generateCCReport()
+    tartita=figure(1, figsize=(3,2))
+    ax = axes([0.1, 0.1, 0.8, 0.8])
 
-    p = Canvas(width=154, height=154, master=tab4)
-    p.create_arc((2,2,152,152), fill="#ffa0ad", outline="#ffa0ad", start=prop(0), extent = prop(salesForPieChart[0]))
-    p.create_arc((2,2,152,152), fill="#9cd9f6", outline="#9cd9f6", start=prop(salesForPieChart[0]), extent = prop(salesForPieChart[1]))
+    # The slices will be ordered and plotted counter-clockwise.
+    labels = 'Cash', 'Credit Card'
+    fracs = [15, 85]
+    explode=(0, 0.1)
+
+    pie(fracs, explode=explode, labels=labels,
+                    autopct='%1.1f%%', shadow=True, startangle=90)
+                    # The default startangle is 0, which would start
+                    # the Frogs slice on the x-axis.  With startangle=90,
+                    # everything is rotated counter-clockwise by 90 degrees,
+                    # so the plotting starts on the positive y-axis.
+
+    #title('Raining Hogs and Dogs', bbox={'facecolor':'0.8', 'pad':5})
+
+    canvas = FigureCanvasTkAgg(tartita, master=tab4)
+    canvas.show()
 
 # Posicionamiento
 
@@ -245,7 +257,7 @@ if __name__ == '__main__':
 
     CashFrame.grid(padx=10, pady=10, row=1, column=2)
     CashLabel.grid(row=1, column=2)
-    p.grid(row=2, column=2)
+    canvas.get_tk_widget().grid(row=2, column=2)
     sep1.grid(column=4,row=1, rowspan=20, sticky="ns")
 
     CustomerFrame.grid(padx=10, pady=10, row=1, column=6)
