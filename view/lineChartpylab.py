@@ -1,14 +1,14 @@
-import pylab
+from matplotlib.pylab import grid, show, ylabel, xlabel, plot
 
 # x axis
 days = [1, 2, 3, 4, 5]
 
 # y axis
 sales = [55, 78, 100, 150, 400]
-pylab.plot(days, sales)
+plot(days, sales)
 
-pylab.xlabel('Days')
-pylab.ylabel('Sale')
-pylab.grid(True)
+xlabel('Days')
+ylabel('Sale')
+grid(True)
 
-pylab.show()
+show()

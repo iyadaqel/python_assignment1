@@ -14,7 +14,7 @@ from controller import initialise as i
 i.intialize()
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-from matplotlib.pylab import pie, figure, axes, bar, yticks, xticks, xlim, gca, show
+from matplotlib.pylab import pie, figure, axes, bar, yticks, xticks, xlim, gca, grid, show, ylabel, xlabel, plot
 
 
 if __name__ == '__main__':
@@ -287,8 +287,21 @@ if __name__ == '__main__':
     canvas = FigureCanvasTkAgg(tartita, master=tab4)
     canvas.show()
 
-    #Create a new frame
+    #Create the third plot
+    linechartita=figure(3, figsize=(3,3),facecolor="white")
+    # x axis
+    days = [1, 2, 3, 4, 5]
 
+    # y axis
+    sales = [55, 78, 100, 150, 400]
+    plot(days, sales)
+
+    xlabel('Days')
+    ylabel('Sale')
+    grid(True)
+
+    canvaslc = FigureCanvasTkAgg(linechartita, master=tab4)
+    canvaslc.show()
 # Posicionamiento
 
     #MainLabel.grid(row=0, column=6, pady=10)
@@ -306,6 +319,7 @@ if __name__ == '__main__':
 
     GSFrame.grid(padx=10, pady=10, row=1, column=10)
     GSLabel.grid(row=0, column=10)
+    canvaslc.get_tk_widget().grid(row=2, column=10)
     #sep3.grid(column=6,row=1, rowspan=20, sticky="ns")
 
     StatsFrame.grid(row=7, column=6, pady=10)
