@@ -42,14 +42,16 @@ def addSale(customerID , productSKU , cc , amount):
         productSKU = int(productSKU)
 
 
-
         #pass the product row to the Sale module
         product = Product.getProductBySKU(productSKU)
-        if(product != False):
+        if(product != False and str(amount) != ""):
             total = int(amount) * product[2]
         else:
             result['error'] = True
-            result['message'] = " Wrong SKU "
+            if(product == False):
+                result['message'] = " Wrong SKU "
+            else:
+                result['message'] ="NO Amount :( a unicorn just died </3"
 
         if(cc==1):
             payMethod = "Credit Card"
