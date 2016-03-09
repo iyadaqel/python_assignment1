@@ -18,7 +18,7 @@ def creografico():
     explode=(0, 0.1)
 
     pie(fracs, explode=explode, labels=labels,
-                    autopct='%1.1f%%', shadow=True, startangle=90)
+                    autopct='%1.1f%%', shadow=True, startangle=90, colors= ["#E13F29", "#D69A80"])
                     # The default startangle is 0, which would start
                     # the Frogs slice on the x-axis.  With startangle=90,
                     # everything is rotated counter-clockwise by 90 degrees,
