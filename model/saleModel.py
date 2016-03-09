@@ -77,3 +77,10 @@ class Sale(object):
         conn.close()
 
         return(reports)
+
+
+    def getLast5DaysReport():
+        conn = sqlite3.connect('../pos.db' , timeout=5)
+        lastDaysSales = conn.execute("SELECT date(sdate) , SUM(total) from SALE group by date(sdate)")
+        return lastDaysSales
+

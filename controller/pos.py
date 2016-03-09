@@ -157,11 +157,13 @@ def generateCCReport():
 
 
 def generateCustomerReport():
-    customerSales = {}
     listOfSales = Sale.getCustomerSales()
+    customerList = []
+    salesList = []
     for sale in listOfSales:
-        customerSales[sale[0]] = sale[1]
-    return(customerSales)
+        customerList.append(sale[0])
+        salesList.append(sale[1])
+    return(customerList , salesList)
 
 
 
@@ -188,5 +190,17 @@ def make_autopct(values):
     return my_autopct
 
 
+def getLastDaysSales():
+    last5DaysSales = Sale.getLast5DaysReport()
+    dateList = []
+    salesList = []
+    i = 1
+    for sale in last5DaysSales:
+        dateList.append(i)
+        salesList.append(sale[1])
+        i+=1
 
-generateCustomerReport()
+    print(dateList )
+    print(salesList)
+    return(dateList , salesList)
+

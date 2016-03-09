@@ -231,33 +231,18 @@ if __name__ == '__main__':
 
 
 
-    #Create the second plot
-    '''
-    f = Figure(figsize=(3,2), dpi=100, facecolor="white")
-    ax = f.add_subplot(111)
-
-    data = (20, 35, 30, 35, 27)
-
-    ind = numpy.arange(5)  # the x locations for the groups
-    width = .5
-
-    rects1 = ax.bar(ind, data, width)
-    rects1[0].set_color('r')
-    rects1[1].set_color('pink')
-
-    canvas1 = FigureCanvasTkAgg(f, master=tab4)
-    canvas1.show()
-    '''
+    #Create the SECOND plot
 
     f=figure(2, figsize=(3,3),facecolor="white")
-    labels = ["Customer1", "Customer2", "Customer3", "Customer4"]
-    data =   [50,100,150,200]
+    barChartData = pos.generateCustomerReport()
+    BarChartlabels = barChartData[0]
+    BarChartData =   barChartData[1]
 
-    xlocations = numpy.array(range(len(data)))+0.5
+    xlocations = numpy.array(range(len(BarChartData)))+0.5
     width = 0.5
-    bar(xlocations, data, width=width)
+    bar(xlocations, BarChartData, width=width)
     yticks(range(0, 8))
-    xticks(xlocations+ width/2, labels)
+    xticks(xlocations+ width/2, BarChartlabels)
     xlim(0, xlocations[-1]+width*2)
     gca().get_xaxis().tick_bottom()
     gca().get_yaxis().tick_left()
@@ -265,24 +250,19 @@ if __name__ == '__main__':
     canvas1 = FigureCanvasTkAgg(f, master=tab4)
     canvas1.show()
 
-    #Create the first plot
+    #Create the FIRST plot
 
     tartita=figure(1, figsize=(3,3),facecolor="white")
     ax = axes([0.1, 0.1, 0.8, 0.8])
 
     # The slices will be ordered and plotted counter-clockwise.
     labels = 'Cash', 'Credit Card'
-    fracs = [15, 85]
+    pieChartData = pos.generateCCReport()
+    fracs = [pieChartData[0], pieChartData[1]]
     explode=(0, 0.1)
 
     pie(fracs, explode=explode, labels=labels,
-                    autopct='%1.1f%%', shadow=True, startangle=90, colors= ["#E13F29", "#D69A80"])
-                    # The default startangle is 0, which would start
-                    # the Frogs slice on the x-axis.  With startangle=90,
-                    # everything is rotated counter-clockwise by 90 degrees,
-                    # so the plotting starts on the positive y-axis.
-
-    #title('Raining Hogs and Dogs', bbox={'facecolor':'0.8', 'pad':5})
+                    autopct=pos.make_autopct(pieChartData), shadow=True, startangle=90, colors= ["#E13F29", "#D69A80"])
 
     canvas = FigureCanvasTkAgg(tartita, master=tab4)
     canvas.show()
@@ -290,11 +270,12 @@ if __name__ == '__main__':
     #Create the third plot
     linechartita=figure(3, figsize=(3,3),facecolor="white")
     # x axis
-    days = [1, 2, 3, 4, 5]
+    lineChartData = pos.getLastDaysSales()
+    lineChartdays = lineChartData[0]
 
     # y axis
-    sales = [55, 78, 100, 150, 400]
-    plot(days, sales)
+    lineChartSales = lineChartData[1]
+    plot(lineChartdays, lineChartSales)
 
     xlabel('Days')
     ylabel('Sale')
