@@ -19,7 +19,7 @@ class Sale(object):
         print("The total daily sales are", Sale.totalDailySales)
 
     def getSaleList():
-        conn = sqlite3.connect('../pos.db')
+        conn = sqlite3.connect('../pos.db' , timeout=5)
         rows= conn.execute("SELECT * FROM SALE")
         return rows
         #return Sale.saleList
@@ -29,7 +29,7 @@ class Sale(object):
 
 
     def insertIntoDB(self):
-        conn = sqlite3.connect('../pos.db')
+        conn = sqlite3.connect('../pos.db' , timeout=5)
         paymethod= str(self.paymethod)
         customerID = str(self.customer[0])
         productID = str(self.product[0])
@@ -45,17 +45,27 @@ class Sale(object):
         reports=[]
 
         #Value Of Sales
-        conn = sqlite3.connect('../pos.db')
+        conn = sqlite3.connect('../pos.db' , timeout=5)
         cursor = conn.cursor()
         cursor.execute("SELECT SUM(total) from SALE ")
         valueOfAllSales = cursor.fetchone()[0]
         reports.append(valueOfAllSales)
 
         #DailySales
-       # cursor.execute("SELECT ")
+        cursor.execute("SELECT COUNT(*) from SALE ")
+        NumberOfAllSales = cursor.fetchone()[0]
+        reports.append(NumberOfAllSales)
 
-        #WeeklySales
 
+        #Todays Sales
+        cursor.execute("SELECT SUM(total) From SALE where date(sdate)  >  date('now','-1 day')")
+        todaySales = cursor.fetchone()[0]
+        reports.append(todaySales)
 
+        # WeeklySales
+        cursor.execute("SELECT SUM(total) From SALE where date(sdate)  >  date('now','-7 days')")
+        weeklySales = cursor.fetchone()[0]
+        reports.append(weeklySales)
+        conn.close()
 
         return(reports)

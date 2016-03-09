@@ -177,4 +177,10 @@ def generateCustomerReport():
 def getSalesReports():
     numbers = Sale.getSalesReports()
     valueOfSales = numbers[0]
-    print(numbers)
+    numberOfSales = numbers[1]
+    todaySales = numbers[2]
+    weeklySales = numbers[3]
+    return(numbers)
+
+
+

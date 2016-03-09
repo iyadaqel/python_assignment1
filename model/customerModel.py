@@ -24,7 +24,7 @@ class Customer(object):
     @staticmethod
     def getCustomerList():
         #return Customer.customers
-        conn = sqlite3.connect('../pos.db')
+        conn = sqlite3.connect('../pos.db' , timeout=5)
         rows = conn.execute("SELECT * FROM CUSTOMER")
         return rows
         # #conn.execute("INSERT INTO CUSTOMER (customerID,customerName) VALUES ('" + str(self.customerID) + "', '" + self.customerName + "')")
@@ -32,7 +32,7 @@ class Customer(object):
 
 
     def searchCustomerByID(customerID):
-        conn = sqlite3.connect('../pos.db')
+        conn = sqlite3.connect('../pos.db' , timeout=5)
         cursor = conn.cursor()
         query = "SELECT * FROM CUSTOMER WHERE customerID =" + str(customerID)
         cursor.execute(query)
@@ -48,7 +48,7 @@ class Customer(object):
         #     return False
 
     def insertIntoDB(self):
-        conn = sqlite3.connect('../pos.db')
+        conn = sqlite3.connect('../pos.db' , timeout=5)
         conn.execute("INSERT INTO CUSTOMER (customerID,customerName) VALUES ('" + str(self.customerID) + "', '" + self.customerName + "')")
         conn.commit()
         conn.close()

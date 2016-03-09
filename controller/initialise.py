@@ -9,7 +9,6 @@ import config as configure
 import os
 
 def intialize():
-
     if not os.path.exists("settings.ini"):
         configure.createConfig()
 
@@ -30,15 +29,15 @@ def intialize():
         conn.execute('CREATE  TABLE CUSTOMER  (customerID CHAR(50) PRIMARY KEY     NOT NULL, customerName  TEXT  NOT NULL);')
         conn.execute('CREATE  TABLE SALE (ID INTEGER PRIMARY KEY AUTOINCREMENT, paymethod CHAR(50) NOT NULL, customerID CHAR(50) NOT NULL, productID CHAR(50) NOT NULL, total    INT NOT NULL ,sdate DATETIME DEFAULT CURRENT_TIMESTAMP);')
 
-        defaultCustomer = Customer(0,"Customer We dont know")
+        defaultCustomer = Customer(0,"Default Customer")
         Customer(1,"Monica")
-        Customer(2,"Iyad")
-        Customer(3,"Karmen")
+        Customer(2,"I")
+        Customer(3,"Carmen")
         Customer(4,"Begum")
 
         p1= Product(123 , "Stripes Shirt" ,  10)
         p2= Product(1234 , "Plain Shirt with Contrasting Collar" , 20)
-        p3= Product(12345 ,"zabatooos i love the word zabatos btw " , 30)
+        p3= Product(12345 ,"zapatooos i love the word zapatos btw " , 30)
 
         pos.addSale(customerID=1 , productSKU = 123 , cc=0 , amount=1)
         pos.addSale(customerID=2 , productSKU = 1234 , cc=1 , amount=1)

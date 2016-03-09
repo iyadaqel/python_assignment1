@@ -17,7 +17,7 @@ class Product (object):
 
     @staticmethod
     def getProductList():
-        conn = sqlite3.connect('../pos.db')
+        conn = sqlite3.connect('../pos.db' , timeout=5)
         rows= conn.execute("SELECT * FROM PRODUCT")
         return rows
         #return Product.products
@@ -28,7 +28,7 @@ class Product (object):
         return rep
 
     def getProductBySKU(productSKU):
-        conn = sqlite3.connect('../pos.db')
+        conn = sqlite3.connect('../pos.db' , timeout=5)
         cursor = conn.cursor()
         query = "SELECT * FROM PRODUCT WHERE SKU =" + str(productSKU)
         cursor.execute(query)
@@ -39,7 +39,7 @@ class Product (object):
             return row
 
     def insertIntoDB(self):
-        conn = sqlite3.connect('../pos.db')
+        conn = sqlite3.connect('../pos.db' , timeout=5)
         conn.execute("INSERT INTO PRODUCT (SKU,NAME,PRICE) VALUES ('" + str(self.SKU) + "', '" + self.name + "','" + str(self.price) + "')")
         conn.commit()
         conn.close()
