@@ -4,13 +4,10 @@ from tkinter import filedialog
 from tkinter.filedialog import askdirectory
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import asksaveasfilename
-#from pylab import *
-import view
 from view.Tab import Tab
 from view.Tab import TabBar
 from controller import pos as pos
 from controller import initialise as i
-#from PIL import ImageTk, Image
 
 i.intialize()
 #matplotlib.use('TkAgg')
@@ -25,8 +22,8 @@ if __name__ == '__main__':
     def addSale():
         #Don't forget to check for the values before you submit
 
-        customerID = UserIdEntry.get()
-        SKU = SKUEntry.get()
+        customerID = customerNamesVar.get()
+        SKU = varSKU.get()
         amount = AmountEntry.get()
         cc = ccButtonValue.get()
         result = pos.addSale(customerID ,SKU , cc , amount)
@@ -78,10 +75,10 @@ if __name__ == '__main__':
     #RegSaleFrame.config(bg="red")
     UserIdLabel = Label(RegSaleFrame, text="User ID:")
     #Drop down list for users
-    var = StringVar(tab1)
+    customerNamesVar = StringVar()
     choices = pos.getOnlyCustomersNames()
-    var.set(choices[0])
-    option = OptionMenu(RegSaleFrame, var, *choices)
+    customerNamesVar.set(choices[0])
+    option = OptionMenu(RegSaleFrame, customerNamesVar, *choices)
     option.grid(row=0, column=2, sticky=N+S+E+W)
 
     SKULabel = Label(RegSaleFrame, text="SKU:")

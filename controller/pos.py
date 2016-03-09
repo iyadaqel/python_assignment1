@@ -26,6 +26,8 @@ status = {}
 #Still need to implement the Summary
 
 def addSale(customerID , productSKU , cc , amount):
+        customerID = customerID.split(' ', 1)[0]
+        productSKU = productSKU.split(' ' ,1)[0]
         #Do some logic here and then send it to Sale(Product,PayMethod,Customer , total)
         result = {}
         result['error'] = False
@@ -124,8 +126,8 @@ def generateCCReport():
             ccSales += sale[4]
 
     total = ccSales + cashSales
-    cashSalesForPieChart = (cashSales / total) * 1000
-    ccSalesForPieChart = (ccSales / total) * 1000
+    cashSalesForPieChart = round((cashSales / total) * 100)
+    ccSalesForPieChart = round((ccSales / total) * 100)
     return[cashSalesForPieChart ,ccSalesForPieChart ]
 
 #STILL NEEDS FIXING
