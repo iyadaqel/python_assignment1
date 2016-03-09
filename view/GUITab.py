@@ -201,7 +201,7 @@ if __name__ == '__main__':
 
     #Cuarta tab
     tab4 = Tab(root, "Reports")
-    MainLabel = Label(tab4, text="REPORTS ", font=("Helvetica", 30), fg='deepskyblue4')
+    #MainLabel = Label(tab4, text="REPORTS ", font=("Helvetica", 30), fg='deepskyblue4')
 
 
     CashFrame=Frame(tab4, bd=3, relief="groove")
@@ -272,7 +272,7 @@ if __name__ == '__main__':
 
 # Posicionamiento
 
-    MainLabel.grid(row=0, column=6, pady=10)
+    #MainLabel.grid(row=0, column=6, pady=10)
 
     CashFrame.grid(padx=10, pady=10, row=1, column=2)
     CashLabel.grid(row=1, column=2)
