@@ -14,7 +14,7 @@ from controller import initialise as i
 i.intialize()
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-from matplotlib.pylab import pie, figure, axes
+from matplotlib.pylab import pie, figure, axes, bar, yticks, xticks, xlim, gca, show
 
 
 if __name__ == '__main__':
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     root = Tk()
     root.title("PYTHUNICORNS POS")
     #root.configure(background='pink')
-    bar = TabBar(root, "Sales")
+    bar1 = TabBar(root, "Sales")
     tab1 = Tab(root, "Sales")
     tab1.grid(row=0, column=3, columnspan=2,sticky=N+S+E+W)
 
@@ -232,6 +232,7 @@ if __name__ == '__main__':
 
 
     #Create the second plot
+    '''
     f = Figure(figsize=(3,2), dpi=100, facecolor="white")
     ax = f.add_subplot(111)
 
@@ -243,6 +244,23 @@ if __name__ == '__main__':
     rects1 = ax.bar(ind, data, width)
     rects1[0].set_color('r')
     rects1[1].set_color('pink')
+
+    canvas1 = FigureCanvasTkAgg(f, master=tab4)
+    canvas1.show()
+    '''
+
+    f=figure(2, figsize=(3,3),facecolor="white")
+    labels = ["Customer1", "Customer2", "Customer3", "Customer4"]
+    data =   [50,100,150,200]
+
+    xlocations = numpy.array(range(len(data)))+0.5
+    width = 0.5
+    bar(xlocations, data, width=width)
+    yticks(range(0, 8))
+    xticks(xlocations+ width/2, labels)
+    xlim(0, xlocations[-1]+width*2)
+    gca().get_xaxis().tick_bottom()
+    gca().get_yaxis().tick_left()
 
     canvas1 = FigureCanvasTkAgg(f, master=tab4)
     canvas1.show()
@@ -327,11 +345,11 @@ if __name__ == '__main__':
     Button3.grid(row=1, column=3)
     Button4.grid(row=2, column=3)
 
-    bar.add(tab1)                   # add the tabs to the tab bar
-    bar.add(tab2)
-    bar.add(tab3)
-    bar.add(tab4)
-    bar.add(tab5)
+    bar1.add(tab1)                   # add the tabs to the tab bar
+    bar1.add(tab2)
+    bar1.add(tab3)
+    bar1.add(tab4)
+    bar1.add(tab5)
 
     root.grid_columnconfigure(0,weight=1)
     root.grid_columnconfigure(1,weight=1)
@@ -342,5 +360,5 @@ if __name__ == '__main__':
     root.grid_rowconfigure(4,weight=1)
 
 
-    bar.show()
+    bar1.show()
     root.mainloop()

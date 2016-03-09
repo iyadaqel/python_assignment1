@@ -1,11 +1,10 @@
-import numpy.numarray as na
-
-from pylab import *
+import numpy
+from matplotlib.pylab import bar, yticks, xticks, xlim, gca, show
 
 labels = ["Customer1", "Customer2", "Customer3", "Customer4"]
 data =   [50,100,150,200]
 
-xlocations = na.array(range(len(data)))+0.5
+xlocations = numpy.array(range(len(data)))+0.5
 width = 0.5
 bar(xlocations, data, width=width)
 yticks(range(0, 8))
