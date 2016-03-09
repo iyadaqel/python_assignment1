@@ -1,3 +1,17 @@
+##TO DO LIST :
+# Implement generateSaleReport()
+# FIX GenerateCustomerReport()
+# Enhance the graphic of the graphs [ Add legend to the graph - connect the line chart to daily customers]
+# Apply the settings
+# Check all possible wrong cases
+# Dropdown menu for CUSTOMERS and SKU
+# Plug Numbers
+#Should we allow the user to enter a price only without SKU?
+
+
+
+
+
 # This file is the main engine of the program. It will take care of redirecting everything.
 # For example: it will take the input tokenize it and direct it to the approrpiate method.
 from model import customerModel
@@ -11,7 +25,7 @@ status = {}
 
 #Still need to implement the Summary
 
-def addSale(customerID , productSKU , cc):
+def addSale(customerID , productSKU , cc , amount):
         #Do some logic here and then send it to Sale(Product,PayMethod,Customer , total)
         result = {}
         result['error'] = False
@@ -28,7 +42,7 @@ def addSale(customerID , productSKU , cc):
         #pass the product row to the Sale module
         product = Product.getProductBySKU(productSKU)
         if(product != False):
-            total = product[2]
+            total = int(amount) * product[2]
         else:
             result['error'] = True
             result['message'] = " Wrong SKU "
@@ -89,13 +103,17 @@ def generateCCReport():
     ccSales = 0
     cashSales = 0
     for sale in listOfSales:
-        if(sale.paymethod == "Cash"):
-            cashSales += sale.total
+        if(sale[1] == "Cash"):
+            cashSales += sale[4]
         else:
-            ccSales += sale.total
+            ccSales += sale[4]
 
-    print("Cash Sales: " + str(cashSales) + " ccSales: " + str(ccSales))
+    total = ccSales + cashSales
+    cashSalesForPieChart = (cashSales / total) * 1000
+    ccSalesForPieChart = (ccSales / total) * 1000
+    return[cashSalesForPieChart ,ccSalesForPieChart ]
 
+#STILL NEEDS FIXING
 def generateCustomerReport():
     listOfSales = Sale.getSaleList()
     customersSales = {}
@@ -109,3 +127,11 @@ def generateCustomerReport():
 
     for key, value in customersSales.items():
         print(Customer.searchCustomerByID(key).customerName, value)
+
+
+
+
+
+def getSalesReports():
+    numbers = Sale.getSalesReport()
+    print(numbers)

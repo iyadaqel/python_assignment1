@@ -4,16 +4,15 @@ from tkinter import filedialog
 from tkinter.filedialog import askdirectory
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import asksaveasfilename
-from pylab import *
+#from pylab import *
 import view
 from view.Tab import Tab
 from view.Tab import TabBar
 from controller import pos as pos
 from controller import initialise as i
-from PIL import ImageTk, Image
+#from PIL import ImageTk, Image
 
 i.intialize()
-
 #matplotlib.use('TkAgg')
 import matplotlib, numpy, sys
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -30,7 +29,7 @@ if __name__ == '__main__':
         SKU = SKUEntry.get()
         amount = AmountEntry.get()
         cc = ccButtonValue.get()
-        result = pos.addSale(customerID ,SKU , cc)
+        result = pos.addSale(customerID ,SKU , cc , amount)
         if(result['error']==True):
             resultLabel.configure(fg="red" , text=result['message'])
         else:
@@ -79,9 +78,9 @@ if __name__ == '__main__':
     #RegSaleFrame.config(bg="red")
     UserIdLabel = Label(RegSaleFrame, text="User ID:")
     UserIdEntry = Entry(RegSaleFrame, width=18)
-    SKULabel = Label(RegSaleFrame, text="SKU/Price:")
+    SKULabel = Label(RegSaleFrame, text="SKU:")
     SKUEntry = Entry(RegSaleFrame, width=18)
-    AmountLabel = Label(RegSaleFrame, text="Amount:")
+    AmountLabel = Label(RegSaleFrame, text="Amount(x):")
     AmountEntry = Entry(RegSaleFrame, width=18)
     resultLabel = Label(RegSaleFrame, text="")
     ccButtonValue = IntVar()
@@ -224,9 +223,11 @@ if __name__ == '__main__':
         return 360.0 * n / 1000
 
     #Label(tab4, text='Credit Card vs Cash').grid()
+    salesForPieChart = pos.generateCCReport()
+
     p = Canvas(width=154, height=154, master=tab4)
-    p.create_arc((2,2,152,152), fill="#ffa0ad", outline="#ffa0ad", start=prop(0), extent = prop(200))
-    p.create_arc((2,2,152,152), fill="#9cd9f6", outline="#9cd9f6", start=prop(200), extent = prop(800))
+    p.create_arc((2,2,152,152), fill="#ffa0ad", outline="#ffa0ad", start=prop(0), extent = prop(salesForPieChart[0]))
+    p.create_arc((2,2,152,152), fill="#9cd9f6", outline="#9cd9f6", start=prop(salesForPieChart[0]), extent = prop(salesForPieChart[1]))
 
 # Posicionamiento
 

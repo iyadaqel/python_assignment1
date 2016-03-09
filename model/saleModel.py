@@ -35,8 +35,15 @@ class Sale(object):
         productID = str(self.product[0])
         total = str(self.total)
 
-        conn.execute("INSERT INTO SALE (ID, paymethod, customerID , productID , total) VALUES (NULL,'" +
-                 paymethod + "','" + customerID + "','" + productID + "','" + total + "')")
+        conn.execute("INSERT INTO SALE (ID, paymethod, customerID , productID , total , date) VALUES (NULL,'" +
+                 paymethod + "','" + customerID + "','" + productID + "','" + total + "','" + time.strftime("%d/%m/%Y %H:%M:%S") + "')")
         conn.commit()
         conn.close()
 
+
+    def getSalesReports(self):
+        conn = sqlite3.connect('../pos.db')
+        cursor = conn.cursor()
+        valueOfAllSales = cursor.execute("SELECT SUM(total) as totalsales from product ")
+        allSales =cursor.fetchone()
+        return(allSales)
