@@ -97,6 +97,13 @@ def getAllProductsNames():
        # quote = quote + str(key) + "    " + products[key].name + "\n"
     return quote
 
+def getOnlyProductsNames():
+    productNames = []
+    products = Product.getProductList()
+    for row in products:
+        productNames.append (row[1])
+       # quote = quote + str(key) + "    " + products[key].name + "\n"
+    return productNames
 
 def generateCCReport():
     listOfSales = Sale.getSaleList()
