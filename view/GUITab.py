@@ -77,9 +77,22 @@ if __name__ == '__main__':
     RegSaleFrame=Frame(tab1, bd=5, relief="groove", width=1000, height=1000)
     #RegSaleFrame.config(bg="red")
     UserIdLabel = Label(RegSaleFrame, text="User ID:")
-    UserIdEntry = Entry(RegSaleFrame, width=18)
+    #Drop down list for users
+    var = StringVar(tab1)
+    choices = pos.getOnlyCustomersNames()
+    var.set(choices[0])
+    option = OptionMenu(RegSaleFrame, var, *choices)
+    option.grid(row=0, column=2, sticky=N+S+E+W)
+
     SKULabel = Label(RegSaleFrame, text="SKU:")
-    SKUEntry = Entry(RegSaleFrame, width=18)
+    #Drop down list for SKU
+    varSKU = StringVar(tab1)
+    # initial value
+    choicesSKU = pos.getOnlyProductsNamesAndSKU()
+    varSKU.set(choicesSKU[0])
+    optionSKU = OptionMenu(RegSaleFrame, varSKU, *choicesSKU)
+    optionSKU.grid(row=1, column=2, sticky=N+S+E+W)
+
     AmountLabel = Label(RegSaleFrame, text="Amount(x):")
     AmountEntry = Entry(RegSaleFrame, width=18)
     resultLabel = Label(RegSaleFrame, text="")
@@ -91,9 +104,9 @@ if __name__ == '__main__':
     RegSaleLabel.grid(row=0, column=0, columnspan=2,sticky=N+S+E+W)
     RegSaleFrame.grid(row=1, column=1, sticky=N+S+E+W)
     UserIdLabel.grid(row=0, column=1, sticky=N+S+E+W)
-    UserIdEntry.grid(row=0, column=2, sticky=N+S+E+W)
+    #UserIdEntry.grid(row=0, column=2, sticky=N+S+E+W)
     SKULabel.grid(row=1, column=1, sticky=N+S+E+W)
-    SKUEntry.grid(row=1, column=2, sticky=N+S+E+W)
+    #SKUEntry.grid(row=1, column=2, sticky=N+S+E+W)
     AmountLabel.grid(row=2, column=1, sticky=N+S+E+W)
     AmountEntry.grid(row=2, column=2, sticky=N+S+E+W)
     resultLabel.grid(row=4 , column=1, sticky=N+S+E+W)
