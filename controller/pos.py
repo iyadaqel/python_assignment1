@@ -26,6 +26,8 @@ status = {}
 #Still need to implement the Summary
 
 def addSale(customerID , productSKU , cc , amount):
+        customerID = customerID.split(' ', 1)[0]
+        productSKU = productSKU.split(' ' ,1)[0]
         #Do some logic here and then send it to Sale(Product,PayMethod,Customer , total)
         result = {}
         result['error'] = False
@@ -97,6 +99,21 @@ def getAllProductsNames():
        # quote = quote + str(key) + "    " + products[key].name + "\n"
     return quote
 
+def getOnlyProductsNamesAndSKU():
+    productNamesAndSKU = []
+    products = Product.getProductList()
+    for row in products:
+        productNamesAndSKU.append (row[0]+ " " + row[1])
+       # quote = quote + str(key) + "    " + products[key].name + "\n"
+    return productNamesAndSKU
+
+def getOnlyCustomersNames():
+    customersNames = []
+    customers = Customer.getCustomerList()
+    for row in customers:
+        customersNames.append (row[0]+ " " + row[1])
+       # quote = quote + str(key) + "    " + products[key].name + "\n"
+    return customersNames
 
 def generateCCReport():
     listOfSales = Sale.getSaleList()
@@ -109,8 +126,8 @@ def generateCCReport():
             ccSales += sale[4]
 
     total = ccSales + cashSales
-    cashSalesForPieChart = (cashSales / total) * 1000
-    ccSalesForPieChart = (ccSales / total) * 1000
+    cashSalesForPieChart = round((cashSales / total) * 100)
+    ccSalesForPieChart = round((ccSales / total) * 100)
     return[cashSalesForPieChart ,ccSalesForPieChart ]
 
 #STILL NEEDS FIXING
