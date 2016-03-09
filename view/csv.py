@@ -6,7 +6,6 @@ Created on Mon Mar  7 23:23:29 2016
 import sqlite3 as lite
 
 con = lite.connect('../pos.db')
-print('Successfully Connected!')
 '''
 con.execute("SELECT * FROM SALE")
 data=con.fetchone()
