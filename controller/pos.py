@@ -133,5 +133,6 @@ def generateCustomerReport():
 
 
 def getSalesReports():
-    numbers = Sale.getSalesReport()
+    numbers = Sale.getSalesReports()
+    valueOfSales = numbers[0]
     print(numbers)
