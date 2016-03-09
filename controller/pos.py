@@ -70,13 +70,28 @@ def addCustomer(customerID , name):
         result['message'] = "Customer Added Successfuly. VIVAAA Pythunicorns"
         return result
 
+def getOnlyProductsSKU():
+    productSKU = []
+    products = Product.getProductList()
+    for row in products:
+        productSKU.append (row[0])
+       # quote = quote + str(key) + "    " + products[key].name + "\n"
+    return productSKU
+
 def addProduct(SKU, name, price):
         result ={}
         SKU = int(SKU)
 
-        Product(SKU , name , price)
-        result['error'] = False
-        result['message'] = "Product Added Successfuly. VIVAAA Pythunicorns"
+        #Check if the new SKU is already used
+        SKUList = getOnlyProductsSKU()
+        if SKU in SKUList:
+            result['error'] = True
+            result['message'] = "The SKU is already in the product database"
+        else:
+            Product(SKU, name, price)
+            result['error'] = False
+            result['message'] = "Product Added Successfuly. VIVAAA Pythunicorns"
+
         return result
 
 
