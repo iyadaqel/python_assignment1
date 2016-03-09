@@ -227,12 +227,12 @@ if __name__ == '__main__':
 
     rects1 = ax.bar(ind, data, width)
 
-    canvas = FigureCanvasTkAgg(f, master=tab4)
-    canvas.show()
+    canvas1 = FigureCanvasTkAgg(f, master=tab4)
+    canvas1.show()
 
     #Create the first plot
 
-    tartita=figure(1, figsize=(3,2))
+    tartita=figure(1, figsize=(3,2),facecolor="white")
     ax = axes([0.1, 0.1, 0.8, 0.8])
 
     # The slices will be ordered and plotted counter-clockwise.
@@ -263,7 +263,7 @@ if __name__ == '__main__':
 
     CustomerFrame.grid(padx=10, pady=10, row=1, column=6)
     CustomerLabel.grid(row=1, column=6)
-    canvas.get_tk_widget().grid(row=2, column=6)
+    canvas1.get_tk_widget().grid(row=2, column=6)
     sep2.grid(column=8,row=1, rowspan=20, sticky="ns")
 
 
