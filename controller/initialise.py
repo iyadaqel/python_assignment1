@@ -20,7 +20,8 @@ def intialize():
 
     dbPath = config.get("database", "url")
     isDBInstalled = config.get("firsttime", "db-installed")
-    if(isDBInstalled == 0 ):
+
+    if(isDBInstalled == "0" ):
         print("Here in the intialize 2")
         conn = sqlite3.connect(dbPath)
         conn.execute(''' DROP TABLE  IF EXISTS PRODUCT; ''')
@@ -53,4 +54,5 @@ def intialize():
         # write changes back to the config file
         with open("settings.ini", "w") as config_file:
             config.write(config_file)
+            print("Here in the intialize 3")
 
