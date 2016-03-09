@@ -295,7 +295,7 @@ if __name__ == '__main__':
     Button2.grid(row=2, column=3)
     Button3.grid(row=3, column=3)
     Button4.grid(row=4, column=3)
-    
+
     bar.add(tab1)                   # add the tabs to the tab bar
     bar.add(tab2)
     bar.add(tab3)
