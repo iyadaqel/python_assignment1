@@ -61,13 +61,25 @@ def addSale(customerID , productSKU , cc , amount):
             return result
         else:
             return result
-
+def getOnlyCustomersID():
+    customersID = []
+    customers = Customer.getCustomerList()
+    for row in customers:
+        customersID.append (row[0])
+       # quote = quote + str(key) + "    " + products[key].name + "\n"
+    return customersID
 
 def addCustomer(customerID , name):
         result ={}
-        Customer(customerID , name)
-        result['error'] = False
-        result['message'] = "Customer Added Successfuly. VIVAAA Pythunicorns"
+        #Check if the new SKU is already used
+        IDList = getOnlyCustomersID()
+        if customerID in IDList:
+            result['error'] = True
+            result['message'] = "The ID belongs to an existing user"
+        else:
+            Customer(customerID, name)
+            result['error'] = False
+            result['message'] = "Customer Added Successfuly. VIVAAA Pythunicorns"
         return result
 
 def getOnlyProductsSKU():
@@ -80,8 +92,6 @@ def getOnlyProductsSKU():
 
 def addProduct(SKU, name, price):
         result ={}
-        SKU = int(SKU)
-
         #Check if the new SKU is already used
         SKUList = getOnlyProductsSKU()
         if SKU in SKUList:
