@@ -205,20 +205,30 @@ if __name__ == '__main__':
 
 
     CashFrame=Frame(tab4, bd=3, relief="groove")
-    CashLabel = Label(CashFrame, text="Cash vs. CC")
+    CashLabel = Label(CashFrame, text="Cash vs. CC", font=("Helvetica", 15, "bold"))
     sep1=ttk.Separator(tab4,orient=VERTICAL)
 
     CustomerFrame=Frame(tab4, bd=3, relief="groove")
-    CustomerLabel = Label(CustomerFrame, text="Customers")
+    CustomerLabel = Label(CustomerFrame, text="Customers", font=("Helvetica", 15, "bold"))
     sep2=ttk.Separator(tab4,orient=VERTICAL)
 
     GSFrame=Frame(tab4, bd=3, relief="groove")
-    GSLabel = Label(GSFrame, text="General Sales")
+    GSLabel = Label(GSFrame, text="Daily Sales", font=("Helvetica", 15, "bold"))
     sep3=ttk.Separator(tab4,orient=VERTICAL)
 
     #Stats thing
     StatsFrame=Frame(tab4, bd=3, relief="groove")
-    StatsLabel = Label(StatsFrame, text="General Sales", font=("Helvetica", 20))
+    StatsLabel = Label(StatsFrame, text="General Sales", font=("Helvetica", 30))
+    StatsLabel1 = Label(StatsFrame, text="Total Sales", font=("Helvetica", 15, "bold"))
+    StatsLabel11 = Label(StatsFrame, text="Total Sales ", font=("Helvetica", 15))
+    StatsLabel2 = Label(StatsFrame, text="Number of Sales", font=("Helvetica", 15, "bold"))
+    StatsLabel21 = Label(StatsFrame, text="Number of Sales", font=("Helvetica", 15))
+    StatsLabel3 = Label(StatsFrame, text="Weekly Sales", font=("Helvetica", 15, "bold"))
+    StatsLabel31 = Label(StatsFrame, text="Weekly Sales", font=("Helvetica", 15))
+    StatsLabel4 = Label(StatsFrame, text="Daily Sales", font=("Helvetica", 15, "bold"))
+    StatsLabel41 = Label(StatsFrame, text="Daily Sales", font=("Helvetica", 15))
+
+
 
     #Create the second plot
     f = Figure(figsize=(3,2), dpi=100, facecolor="white")
@@ -279,8 +289,16 @@ if __name__ == '__main__':
     GSLabel.grid(row=0, column=10)
     #sep3.grid(column=6,row=1, rowspan=20, sticky="ns")
 
-    StatsFrame.grid(row=6, column=6, pady=10)
-    StatsLabel.grid(row=6, column=6)
+    StatsFrame.grid(row=7, column=6, pady=10)
+    StatsLabel.grid(row=7, column=4, columnspan=2)
+    StatsLabel1.grid(row=8, column=4)
+    StatsLabel11.grid(row=9, column=4)
+    StatsLabel2.grid(row=8, column=5)
+    StatsLabel21.grid(row=9, column=5)
+    StatsLabel3.grid(row=10, column=4)
+    StatsLabel31.grid(row=11, column=4)
+    StatsLabel4.grid(row=10, column=5)
+    StatsLabel41.grid(row=11, column=5)
 
     tab5 = Tab(root, "Settings")
     def askFolder():
